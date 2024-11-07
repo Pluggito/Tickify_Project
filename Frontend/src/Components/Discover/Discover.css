@@ -1,0 +1,68 @@
+.container{
+    padding: 25px 8%;
+}
+.discover
+{
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+    margin-top: 100px;
+    letter-spacing: 1px;
+    font-size: 3rem;
+    border-bottom: 3px solid var(--primary-color);
+    width: 200px;
+
+}
+
+.events{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( 250px, 1fr));  
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    align-content: center;
+    /* border: 3px solid blue; */
+    column-gap: 20px;
+    padding: 1rem;
+}
+
+.discoverEvents{
+    align-content: center;
+    /* border: 4px solid green; */
+}
+
+.photo{
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: 5px solid grey;
+}
+
+input
+{
+    margin-top: 100px;
+}
+
+.testing , .date, .month{
+    color: black;
+    font-weight: 400;
+    margin-left: 10px;
+    letter-spacing: 1px;
+}
+
+.month
+{
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.testing{
+  float: right;
+  margin-top: -20px;
+  margin-right: 50px;
+  font-size: 1.5rem;
+
+}

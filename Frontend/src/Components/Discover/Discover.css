@@ -1,6 +1,9 @@
 .container{
     padding: 25px 8%;
 }
+
+
+
 .discover
 {
     font-family: var(--font-family);
@@ -8,11 +11,19 @@
     margin-top: 100px;
     letter-spacing: 1px;
     font-size: 3rem;
-    border-bottom: 3px solid var(--primary-color);
+    border-left: 7px solid var(--primary-color);
+    padding-left: 10px;
     width: 200px;
-
+    display: inline-block;
 }
 
+.iconArrow{
+    color: var(--secondary-color);
+    justify-content: center;
+    margin-left: 50px;
+    padding-bottom: 5px;
+
+}
 .events{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax( 250px, 1fr));  

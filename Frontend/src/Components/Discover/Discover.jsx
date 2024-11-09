@@ -1,12 +1,19 @@
 import './Discover.css';
 import photo1 from '../../assets/pexels-foteros-352505.jpg';
+import ReactDOM from 'react-dom/client'; // Updated import for React 18
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Discover(){
         
 
     return(
         <div className="container"> 
-            <h1 className='discover'>Discover</h1>
+        <div className='dicoverBlock'>
+        <h1 className='discover'>Discover</h1>
+        <FontAwesomeIcon icon={faArrowRight} className='iconArrow' size='1x'/>
+        </div>
+         
 
             <div className='events'>
                 <div className='discoverEvents'>
@@ -41,3 +48,6 @@ export default function Discover(){
         </div>
     )
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Discover />);

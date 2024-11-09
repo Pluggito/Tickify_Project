@@ -1,15 +1,7 @@
 import './Discover.css';
 import photo1 from '../../assets/pexels-foteros-352505.jpg';
-import { useState } from 'react';
 
 export default function Discover(){
-
-    const [ticketInfo, setTicketInfo] = useState ('');
-    const [date, setDate] = useState();
-
-   
-
-
         
 
     return(
@@ -38,16 +30,14 @@ export default function Discover(){
 
             </div>
 
-            <input type="text"
-             value={ticketInfo} 
-             placeholder='ticket name'
-             onChange={(e) => setTicketInfo(e.target.value)} />
 
-             <input type="month"
-             value={date}
-             placeholder='Date'
-             onChange={(e)=> setDate(e.target.value)} />
+            <div className='eventCreation'>
+                <h2>Make your own Event</h2>
+                <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
+                <button className='eventButton'>Create Events</button>
+            </div>
 
+       
         </div>
     )
 }

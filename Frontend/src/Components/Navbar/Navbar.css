@@ -23,9 +23,14 @@ nav ul li{
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+    transition: all 0.5s;
 
 }
 
+nav ul li:hover{
+    color: var(--primary-color);
+
+}
 .login{
     background-color: var(--secondary-color);
     color: #fff;

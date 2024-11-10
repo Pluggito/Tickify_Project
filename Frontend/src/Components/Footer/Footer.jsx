@@ -9,7 +9,7 @@ function Footer() {
 
 
         function subscribe (){
-          setSubscribeInput('Subsrcibed')
+          setSubscribeInput('Subscribed')
             setEmail(''); 
 
             setTimeout(() => {

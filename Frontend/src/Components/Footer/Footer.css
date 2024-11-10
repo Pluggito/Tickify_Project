@@ -28,6 +28,7 @@
 
 .footer p {
     line-height: 1.6;
+    display: block;
 }
 
 .footer-links a {
@@ -36,11 +37,12 @@
     text-decoration: none;
     margin: 10px 0;
     list-style: none;
+    transition: var(transition);
 
 }
 
 .footer-links a:hover {
-    
+    transform: scale(1.05);
 }
 
 .social-icons {
@@ -55,27 +57,52 @@
 }
 
 .subscribeSection{
-   display: inline-block;
+   display: flex;
+   flex-direction: row ;
+   column-gap: 10px;
+   padding: 2rem 2rem;
+   justify-content: center;
+   align-items: center;
+ /*  border: 3px solid blue; */
+   border-radius: 40px;
+   width: 400px;
+   height: 40px;
+  margin-left: -20px;
+  margin-top: 20px;
+  background-color: #fff;
+
 
 }
 
-.subscribe-input {
-    padding: 8px;
-    border: none;
-    border-radius: 20px;
-    flex: 1;
-    outline: none;
+#subscribeInput{
+padding: auto;
+margin: 40px 0;
+height: 40px;
+width: 350px;
+border-radius: 17.5px;
+text-align: center;
+padding: 1rem 1rem;
+border: none;
+background: transparent;
+z-index: 3;
+outline: none;
+font: bold 15px var(--font-family);
 }
 
 .subscribeButton{
-  /*  border: none;
-    background-color: var(--secondary-color);
-    color: white;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer; */
+    width: 270px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 2rem;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font: bold 1rem var(--font-family);
+    cursor: pointer;
+    transition: all 0.5s;
+    letter-spacing: 1px;
 
-    width: 100px;
-    height: 30px;
-    padding: 1rem 1rem;
+}
+
+.subscribeButton:hover{
+    transform: scale(1.02);
 }

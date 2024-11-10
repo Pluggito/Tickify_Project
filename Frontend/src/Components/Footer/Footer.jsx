@@ -1,22 +1,22 @@
 import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTwitter, faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import { useState } from 'react';
 
 function Footer() {
+    const [subscribeInput, setSubscribeInput] = useState ('Subscribe Now');
+    const [email, setEmail] = useState('');
 
-    function subscribe(){
-        const buttonElement = document.querySelector('.subscribeButton');
 
-        if(buttonElement.innerHTML === 'Subscribe'){
-            buttonElement.innerHTML = 'Subscribed';
-            }
-            else{
-            buttonElement.innerHTML = 'Subscribe Now';
-            }
+        function subscribe (){
+          setSubscribeInput('Subscibed')
+            setEmail(''); 
 
-    }
+            setTimeout(() => {
+                setSubscribeInput('Subscribe Now');
+            }, 3000);
+        }
 
-    
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -25,7 +25,7 @@ function Footer() {
                     <h4>Tickify</h4>
                     <p>Tickify is a global self-service ticketing platform for live experiences that allows anyone to create, share, find, and attend events that fuel their passions and enrich their lives.</p>
                     <div className="social-icons">
-                        <a href="/" className="social-icon"><FontAwesomeIcon icon={faInstagram} size='3x'/></a>
+                        <a href="https://www.instagram.com/tickify.click" className="social-icon"><FontAwesomeIcon icon={faInstagram} size='3x'/></a>
                         <a href="/" className="social-icon"><FontAwesomeIcon icon={faTwitter} size='3x'/></a>
                         <a href="/" className="social-icon"><FontAwesomeIcon icon={faLinkedin} size='3x'/></a>
                     </div>
@@ -60,8 +60,15 @@ function Footer() {
                     <h4>Stay In The Loop</h4>
                     <p>Join our mailing list to stay in the loop with our newest events and concerts.</p>
                     <div className="subscribeSection">
-                        <input type="email" placeholder="Enter your email address..." className="subscribeInput" />
-                        <button className="subscribeButton" onClick={subscribe}>Subscribe Now</button>
+                        <input 
+                        type="email" 
+                        placeholder="Enter your email address." 
+                        id='subscribeInput'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}/>
+                          <button className="subscribeButton" onClick={subscribe} type='button'>
+                            {subscribeInput}
+                        </button>
                     </div>
                 </div>
             </div>

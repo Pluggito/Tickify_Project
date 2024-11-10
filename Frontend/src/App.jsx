@@ -32,6 +32,8 @@ const App = () => {
         <Route path="/Tickify_Project/about" element={<About />} />
         <Route path="/Tickify_Project/ticket" element={<Ticket />} />
         <Route path="/Tickify_Project/contact" element={<Contact />} />
+
+        {/*Login page*/}
         <Route path="/Tickify_Project/login-sign-up" element={<LoginSignUp />} />
         
       </Routes>

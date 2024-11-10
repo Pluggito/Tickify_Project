@@ -10,7 +10,7 @@ return(
 <div id='Header'>
 <div className='container'>
     <div className='heroSection'>
-        <img src={displayPhoto} alt='displayPhoto'/>
+        <img src={displayPhoto} alt='displayPhoto' loading="lazy"/>
         <div style={{alignItems: 'center', justifyContent: 'center'}}>
         <h1 className='Title'>At Tickify,</h1>        
         <p className='Description'>{narration}</p>

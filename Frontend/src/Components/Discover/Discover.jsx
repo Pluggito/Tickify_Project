@@ -42,7 +42,7 @@ export default function Discover(){
             <div className='eventCreation'>
                 <h2>Make your own Event</h2>
                 <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-                <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none', color: 'white' }}>Create Events</Link></button>
+                <button className='eventButton'><Link to="/Tickify_Project/create-events" style={{ textDecoration: 'none', color: 'white' }}>Create Events</Link></button>
             </div>
 
        

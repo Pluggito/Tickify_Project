@@ -1,5 +1,5 @@
 import './Features.css';
-import ReactDOM from 'react-dom/client'; // Updated import for React 18
+// import ReactDOM from 'react-dom/client'; // Updated import for React 18
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { faPeopleArrows } from '@fortawesome/free-solid-svg-icons';
@@ -36,5 +36,5 @@ export default function Features(){
 }
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Features />);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Features />);

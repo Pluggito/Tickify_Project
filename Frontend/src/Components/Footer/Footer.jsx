@@ -1,4 +1,3 @@
-import React from 'react';
 import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';

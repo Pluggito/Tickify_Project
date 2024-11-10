@@ -1,8 +1,9 @@
 import './Discover.css';
 import photo1 from '../../assets/pexels-foteros-352505.jpg';
-import ReactDOM from 'react-dom/client'; // Updated import for React 18
+// import ReactDOM from 'react-dom/client'; // Updated import for React 18
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Discover(){
         
@@ -41,7 +42,7 @@ export default function Discover(){
             <div className='eventCreation'>
                 <h2>Make your own Event</h2>
                 <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-                <button className='eventButton'>Create Events</button>
+                <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none', color: 'white' }}>Create Events</Link></button>
             </div>
 
        
@@ -49,5 +50,5 @@ export default function Discover(){
     )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Discover />);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Discover />);

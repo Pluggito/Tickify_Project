@@ -17,7 +17,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route 
-          path="/" 
+          path="/Tickify_Project/" 
           element={
             <>
               <Hero />
@@ -27,12 +27,12 @@ const App = () => {
             </>
           } 
         />
-        <Route path="/discovers" element={<EventsCategory />} />
-        <Route path="/advert" element={<Advert />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/ticket" element={<Ticket />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login-sign-up" element={<LoginSignUp />} />
+        <Route path="/Tickify_Project/discovers" element={<EventsCategory />} />
+        <Route path="/Tickify_Project/advert" element={<Advert />} />
+        <Route path="/Tickify_Project/about" element={<About />} />
+        <Route path="/Tickify_Project/ticket" element={<Ticket />} />
+        <Route path="/Tickify_Project/contact" element={<Contact />} />
+        <Route path="/Tickify_Project/login-sign-up" element={<LoginSignUp />} />
         
       </Routes>
     </Router>

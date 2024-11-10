@@ -33,7 +33,7 @@ nav ul li::after{
     width: 0;
     height: 3px;
     left: 0;
-    bottom: -6px;
+    bottom: -2px;
     cursor: pointer;
     align-self: center;
     background-color: #b30d0d;

@@ -3,6 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
+
+    function subscribe(){
+        const buttonElement = document.querySelector('.subscribeButton');
+
+        if(buttonElement.innerHTML === 'Subscribe'){
+            buttonElement.innerHTML = 'Subscribed';
+            }
+            else{
+            buttonElement.innerHTML = 'Subscribe Now';
+            }
+
+    }
+
+    
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -47,7 +61,7 @@ function Footer() {
                     <p>Join our mailing list to stay in the loop with our newest events and concerts.</p>
                     <div className="subscribeSection">
                         <input type="email" placeholder="Enter your email address..." className="subscribeInput" />
-                        <button className="subscribeButton">Subscribe Now</button>
+                        <button className="subscribeButton" onClick={subscribe}>Subscribe Now</button>
                     </div>
                 </div>
             </div>

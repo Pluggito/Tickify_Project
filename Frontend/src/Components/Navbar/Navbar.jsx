@@ -11,13 +11,13 @@ export default function Navbar() {
       </div>
 
       <ul>
-        <li><Link to="/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link></li>
-        <li><Link to="/discovers" style={{ textDecoration: 'none', color: 'black' }}>Discover</Link></li>
-        <li><Link to="/advert" style={{ textDecoration: 'none', color: 'black' }}>Advert</Link></li>
-        <li><Link to="/ticket" style={{ textDecoration: 'none', color: 'black' }}>Ticket</Link></li>
-        <li><Link to="/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact</Link></li>
+        <li><Link to="/Tickify_Project/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link></li>
+        <li><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: 'black' }}>Discover</Link></li>
+        <li><Link to="/Tickify_Project/advert" style={{ textDecoration: 'none', color: 'black' }}>Advert</Link></li>
+        <li><Link to="/Tickify_Project/ticket" style={{ textDecoration: 'none', color: 'black' }}>Ticket</Link></li>
+        <li><Link to="/Tickify_Project/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact</Link></li>
         <div>
-          <button className='login'><Link to="/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Login</Link></button>
+          <button className='login'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Login</Link></button>
         </div>
       </ul>
     </nav>

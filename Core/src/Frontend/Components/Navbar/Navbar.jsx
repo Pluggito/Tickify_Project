@@ -17,7 +17,7 @@ export default function Navbar() {
         <li><Link to="/Tickify_Project/ticket" style={{ textDecoration: 'none', color: 'black' }}>Ticket</Link></li>
         <li><Link to="/Tickify_Project/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact</Link></li>
         <div>
-          <button className='login'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Login</Link></button>
+          <button className='get-started'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>
         </div>
       </ul>
     </nav>

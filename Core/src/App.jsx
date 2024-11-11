@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Discover from "./Components/Discover/Discover";
-import Features from "./Components/Features/Features";
-import Footer from "./Components/Footer/Footer";
-import Hero from "./Components/Hero/Hero";
-import Navbar from "./Components/Navbar/Navbar";
-import EventsCategory from './Pages/EventsCategory';
-import About from './Pages/About';
-import Advert from './Pages/Advert';
-import LoginSignUp from './Pages/LoginSignUp';
-import Ticket from './Pages/Ticket';
-import Contact from './Pages/Contact';
+import Discover from "./Frontend/Components/Discover/Discover";
+import Features from "./Frontend/Components/Features/Features";
+import Footer from "./Frontend/Components/Footer/Footer";
+import Hero from "./Frontend/Components/Hero/Hero";
+import Navbar from "./Frontend/Components/Navbar/Navbar";
+import EventsCategory from './Frontend/Pages/EventsCategory';
+import About from './Frontend/Pages/About';
+import Advert from './Frontend/Pages/Advert';
+import LoginSignUp from './Frontend/Pages/LoginSignUp';
+import Ticket from './Frontend/Pages/Ticket';
+import Contact from './Frontend/Pages/Contact';
 
 const App = () => {
   return (

@@ -5,7 +5,7 @@ export default function LoginSignUp(){
     const [ email,setEmail ] = useState('')
     const [ password,setPassword ] = useState('')
 
-    const logun
+    // const logun
     return (
         <div>
             <h1 style={{color: 'black'}}>Login</h1>

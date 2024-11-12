@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import './Css/Login.css';
-import { logIn, signOut, signUp } from '../../Backend/Auth/auth';
-import { useAuth } from '../../Backend/context/AuthContext';
 import { useNavigate } from 'react-router';
 import '../Css/Login.css';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../Backend/context/AuthContext';
+import { logIn } from '../../../Backend/Auth/auth';
 
 export default function TicketLogin() {
   const [email, setEmail] = useState('');
@@ -44,7 +43,7 @@ const login = async (e) =>{
           <p>Your gateway to seamless event experiences</p>
         </div>
         <form className="login-form" autoComplete="off">
-          <h2>Welcome Back {currentUser?.email} </h2>
+          <h2>Welcome Back </h2>
           <p>Please log in to access your tickets</p>
           <div className="input-group">
         <input

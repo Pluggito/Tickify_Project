@@ -11,13 +11,12 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
     <script type="text/javascript">
         if (!window.location.pathname.startsWith('/Tickify_Project')) {
           const redirectTo = `/Tickify_Project${window.location.pathname}`;
           window.location.href = redirectTo;
         }
       </script>
-      
+    <script type="module" src="/src/main.jsx"></script>     
   </body>
 </html>

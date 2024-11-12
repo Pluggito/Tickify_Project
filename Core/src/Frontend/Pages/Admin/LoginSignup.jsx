@@ -3,6 +3,8 @@ import './Css/Login.css';
 import { logIn, signOut, signUp } from '../../Backend/Auth/auth';
 import { useAuth } from '../../Backend/context/AuthContext';
 import { useNavigate } from 'react-router';
+import '../Css/Login.css';
+import { Link } from 'react-router-dom';
 
 export default function TicketLogin() {
   const [email, setEmail] = useState('');
@@ -32,9 +34,7 @@ const login = async (e) =>{
 };
 
 
-  const text = [
-    {newUser:`Don't have an account? `}
-  ]
+  const text = `Don't have an account? `;
 
   return (
     <div className="login-wrapper">
@@ -68,10 +68,9 @@ const login = async (e) =>{
         />
         <label htmlFor="password">Password</label>
         </div>
-        <div className="forgot-password">Lost Password? <span>Click Here</span>
-        </div>
-          <button type="submit" className="login-btn" onClick={(e) => login(e)}>Log In</button>
-          <p className="signup-text">{text.newUser}<a href="/signup">Sign up</a></p>
+          <p>Forgot password? <Link to="/Tickify_Project/forgetpassword"style={{cursor: 'pointer', color: '#b30d0d'}}>Click here</Link></p>
+          <button type="submit" className="login-btn" onClick={login}>Log In</button>
+          <p className="signup-text" style={{color: 'black'}}>{text}<Link to="/Tickify_Project/sign-up">Sign Up</Link></p>
         </form>
       </div>
     </div>

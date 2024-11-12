@@ -10,9 +10,12 @@ import Advert from './Frontend/Pages/Advert';
 import LoginSignUp from './Frontend/Pages/LoginSignup';
 import Ticket from './Frontend/Pages/Ticket';
 import Contact from './Frontend/Pages/Contact';
+import { AuthProvider } from './Backend/context/AuthContext';
 
 const App = () => {
   return (
+    <AuthProvider>
+
     <Router>
       <Navbar />
       <Routes>
@@ -38,6 +41,7 @@ const App = () => {
         
       </Routes>
     </Router>
+    </AuthProvider>
   );
 };
 

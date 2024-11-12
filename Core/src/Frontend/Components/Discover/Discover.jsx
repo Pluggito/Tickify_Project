@@ -18,19 +18,19 @@ export default function Discover(){
 
             <div className='events'>
                 <div className='discoverEvents'>
-                    <img src={photo1} alt='display 1' className='photo photo1' />
+                    <img src={photo1} alt='display 1' className='photo photo1' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
                     <p className='testing'>Tickets Available</p>
                 </div>
                 <div className='discoverEvents'>
-                    <img src={photo1} alt='display 1' className='photo photo2' />
+                    <img src={photo1} alt='display 1' className='photo photo2' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
                     <p className='testing'>Tickets Available</p>                    
                 </div>
                 <div className='discoverEvents'>
-                    <img src={photo1} alt='display 1' className='photo photo3'/>
+                    <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
                     <p className='testing'>Tickets Available</p>

@@ -7,7 +7,6 @@ import Navbar from "./Frontend/Components/Navbar/Navbar";
 import EventsCategory from './Frontend/Pages/EventsCategory';
 import About from './Frontend/Pages/About';
 import Advert from './Frontend/Pages/Advert';
-// import LoginSignUp from './Frontend/Pages/LoginSignUp';
 import LoginSignUp from './Frontend/Pages/LoginSignup';
 import Ticket from './Frontend/Pages/Ticket';
 import Contact from './Frontend/Pages/Contact';

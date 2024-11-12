@@ -1,19 +1,17 @@
 import { useState } from 'react';
-import './Css/Login.css';
+import '../Css/Login.css';
+import { Link } from 'react-router-dom';
 
 export default function TicketLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   function login(){
     setEmail('')
     setPassword('')
 };
 
-  const text = [
-    {newUser:`Don't have an account? `}
-  ]
+  const text = `Don't have an account? `;
 
   return (
     <div className="login-wrapper">
@@ -47,10 +45,9 @@ export default function TicketLogin() {
         />
         <label htmlFor="password">Password</label>
         </div>
-        <div className="forgot-password">Lost Password? <span>Click Here</span>
-        </div>
+          <p>Forgot password? <Link to="/Tickify_Project/forgetpassword"style={{cursor: 'pointer', color: '#b30d0d'}}>Click here</Link></p>
           <button type="submit" className="login-btn" onClick={login}>Log In</button>
-          <p className="signup-text">{text.newUser}<a href="/signup">Sign up</a></p>
+          <p className="signup-text" style={{color: 'black'}}>{text}<Link to="/Tickify_Project/sign-up">Sign Up</Link></p>
         </form>
       </div>
     </div>

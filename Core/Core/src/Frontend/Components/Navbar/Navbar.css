@@ -65,7 +65,7 @@ nav ul li:hover{
 }
 
 .get-started:hover{
-    transform: translateY(-3px); /* Reduced the distance of the button when hovered */
+    transform: translateY(-5px);
 }
 
 nav img{

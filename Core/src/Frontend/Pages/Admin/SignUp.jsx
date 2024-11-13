@@ -76,7 +76,7 @@ export default function SignUp() {
     return (
         <div className="sign-up-content">
             
-            <div className="left-section">
+            <div className="sign-up-left-section">
                 <form >
                     <h2>Create Account</h2>
                     <div className="input-group">

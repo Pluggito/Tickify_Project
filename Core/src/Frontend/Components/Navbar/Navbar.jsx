@@ -3,6 +3,10 @@ import logo from '../../assets/Logo 1.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { signOut } from '../../../Backend/Auth/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
+// THIS IS THE NAVBAR FOR THE TICKET SITE
 
 export default function Navbar() {
 
@@ -27,11 +31,15 @@ export default function Navbar() {
         <li><Link to="/Tickify_Project/pricing" style={{ textDecoration: 'none', color: 'black' }}>Pricing</Link></li>
         <li><Link to="/Tickify_Project/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact</Link></li>
 
+        {/* THIS IS THE ICON FOR THE USER */}
+         {/*<FontAwesomeIcon icon={faUser} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} />*/} 
+
 
         <div>
           {/* IF THE USER IS LOGGED IN, IT WILL SHOW THE LOGOUT BUTTON */}
           {/* IF NO ONE IS LOGGED IN, IT WLL SHOW GET STARTED BUTTON */}
-         {userLoggedIn ?  <p onClick={signOut} >Logout</p>
+         {userLoggedIn ?  <p onClick={signOut} style={{cursor: 'pointer', color: '#b30d0d'}} >Logout</p>
+
          : <button className='get-started'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>}
         </div>
       </ul>

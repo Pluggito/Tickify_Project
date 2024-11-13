@@ -113,8 +113,7 @@
 }
 
 .right-section {
-    background: linear-gradient(150deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.5), #b30d0d),
-        url('../../assets/pexels-sebastian-ervi-866902-1763075.jpg');
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.5), #b30d0d), url('../../assets/pexels-sebastian-ervi-866902-1763075.jpg');
     width: 50%;
     height: 100vh;
     background-position: center;

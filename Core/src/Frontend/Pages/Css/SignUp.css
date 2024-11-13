@@ -13,6 +13,7 @@
     padding: 3rem;
     box-sizing: border-box;
     background-color: #f9f9f9;
+    margin-top: 50px;
     
 }
 
@@ -23,8 +24,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: slideIn 1.5s ease-in-out;
-    animation-delay: 0.4s;
-    
+    animation-delay: 0.4s;    
     
 }
 

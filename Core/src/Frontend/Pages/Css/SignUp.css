@@ -1,7 +1,7 @@
 .sign-up-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     height: 100vh;
 }
 
@@ -13,15 +13,14 @@
     padding: 3rem;
     box-sizing: border-box;
     background-color: #f9f9f9;
-    margin-top: 50px;
     
 }
 
 .sign-up-left-section form {
-    max-width: 650px;
+    max-width: 700px;
     margin: auto;
     padding: 4rem;
-    border-radius: 20px;
+    border-radius: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: slideIn 1.5s ease-in-out;
     animation-delay: 0.4s;    
@@ -53,7 +52,7 @@
 }
 
 .sign-up-left-section .input-group input {
-    width: 100%;
+    width: 400px;
     padding: 0.8rem 2rem;
     font-size: 1rem;
     border: 1px solid #ddd;
@@ -96,7 +95,7 @@
     margin-bottom: 1rem;
 }
 
-.left-section button {
+.sign-up-left-section button {
     width: 100%;
     padding: 0.8rem;
     border: none;
@@ -108,16 +107,26 @@
     transition: background-color 0.3s ease;
 }
 
-.left-section button:hover {
+.sign-up-left-section button:hover {
     background-color: #990b0b;
 }
 
 .right-section {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(150deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.5), #b30d0d), url('../../assets/pexels-sebastian-ervi-866902-1763075.jpg');
-    width: 50%;
-    height: 100vh;
-    background-position: center;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 100%; /* Match the height of the container */
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+
 }
 
 .terms-and-conditions {
@@ -142,5 +151,27 @@
 
 .terms-and-conditions label:hover {
     color: #b30d0d;
+}
+
+.sign-up-left-section .error {
+    margin: 10px 0;
+    color: #b30d0d;
+}
+
+.sign-up-left-section .error-password {
+    margin: 10px 0;
+    color: #b30d0d;
+}
+
+.cross-circle {
+
+    top: 10px;
+    right: 10px;
+    margin: 1rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cross-circle:hover {
+    transform: scale(1.1);
 }
 

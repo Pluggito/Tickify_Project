@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { logIn } from '../../../Backend/Auth/auth';
 
+// THIS IS THE LOGIN PAGE FOR THE TICKET BUYER
+
 export default function TicketLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

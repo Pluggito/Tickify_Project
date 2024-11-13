@@ -55,6 +55,7 @@ export default function SignUp() {
 
     return (
         <div className="sign-up-content">
+            
             <div className="left-section">
                 <form >
                     <h2>Create Account</h2>
@@ -66,6 +67,7 @@ export default function SignUp() {
                             onChange={handleChange}
                             required
                             autoComplete='off'
+                            id='name'
                         />
                         <label htmlFor='name'>Name</label>
                     </div>
@@ -77,6 +79,8 @@ export default function SignUp() {
                             onChange={handleChange}
                             required
                             autoComplete='off'
+                            id='email'
+                            
                         />
                         <label htmlFor='email'>Email</label>
                     </div>
@@ -88,6 +92,7 @@ export default function SignUp() {
                             onChange={handleChange}
                             required
                             autoComplete='off'
+                            id='password'
                         />
                         <label htmlFor='password'>Password</label>
                     </div>
@@ -95,3 +100,12 @@ export default function SignUp() {
                     <button onClick={handleSubmit} type="submit">Sign Up</button>
                     <p style={{color: '#b30d0d',textAlign: 'center', marginTop: '10px'}}>Or</p>
                     <div style={{justifyContent: 'center', marginTop: '30px', padding: '0 7rem'}}>
+                        <FontAwesomeIcon icon={faGoogle} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} onClick={handleSignInWithGoogle} />
+                    </div>
+                </form> 
+            </div>
+
+            <div className='right-section'></div>
+        </div>
+    );
+}

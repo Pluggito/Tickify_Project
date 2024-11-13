@@ -1,15 +1,37 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import '../Css/Login.css';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../Backend/context/AuthContext';
+import { logIn } from '../../../Backend/Auth/auth';
 
 export default function TicketLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // I DONT THINK WE NEED THIS
+ //  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
+  // CURRENTUSER VARIABLE CONTAINS THE CURRENT USER
+  // USERLOGGEDIN VARIABLE CONTAINS THE BOOLEAN FOR WEATHER A USER IS LOGGED IN
+  const { currentUser, userLoggedIn  } = useAuth();
+  const navigate = useNavigate()
 
-  function login(){
-    setEmail('')
-    setPassword('')
+//THIS IS THE FUNCTION TO LOGIN 
+const login = async (e) =>{
+    e.preventDefault()
+    try {
+        await logIn(email,password);
+
+        //YOU CAN ADD LOADING ANIMATION HERE.....
+
+        //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
+        navigate('/Tickify_Project/')
+    } catch (error) {
+        console.error(error.message)
+    }
 };
+
 
   const text = `Don't have an account? `;
 
@@ -21,7 +43,7 @@ export default function TicketLogin() {
           <p>Your gateway to seamless event experiences</p>
         </div>
         <form className="login-form" autoComplete="off">
-          <h2>Welcome Back</h2>
+          <h2>Welcome Back </h2>
           <p>Please log in to access your tickets</p>
           <div className="input-group">
         <input

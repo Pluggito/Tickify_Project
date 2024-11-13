@@ -12,9 +12,13 @@ import Pricing from './Frontend/Pages/Pricing';
 import Contact from './Frontend/Pages/Contact';
 import SignUp from './Frontend/Pages/Admin/SignUp';
 import ForgetPaswword from './Frontend/Pages/Admin/ForgetPassword';
+import { AuthProvider } from './Backend/context/AuthContext';
+
 
 const App = () => {
   return (
+    <AuthProvider>
+
     <Router>
       <Navbar />
       <Routes>
@@ -41,6 +45,7 @@ const App = () => {
         <Route path='/Tickify_Project/forgetpassword' element={<ForgetPaswword />} />    
       </Routes>
     </Router>
+    </AuthProvider>
   );
 };
 

@@ -6,13 +6,18 @@ import { signOut } from '../../../Backend/Auth/auth';
 
 export default function Navbar() {
 
-  const { userLoggedIn } = useAuth()
+  const { userLoggedIn , currentUser } = useAuth()
   
   return (
     <nav>
       <div className='info'>
         <img src={logo} alt='logo'/>
         <h1 style={{ cursor: 'pointer' }}>Tickify.click</h1>
+      </div>
+
+      {/* JUST TO SHOW THE PERSON LOGGED IN */}
+      <div>
+        {userLoggedIn ? <p>Logged in as {currentUser.email} </p> : "" }
       </div>
 
       <ul>

@@ -95,11 +95,3 @@ export default function SignUp() {
                     <button onClick={handleSubmit} type="submit">Sign Up</button>
                     <p style={{color: '#b30d0d',textAlign: 'center', marginTop: '10px'}}>Or</p>
                     <div style={{justifyContent: 'center', marginTop: '30px', padding: '0 7rem'}}>
-                    <FontAwesomeIcon onClick={handleSignInWithGoogle} icon={faGoogle} size="2x" style={{color: '#b30d0d'}} />
-                    </div>                   
-                </form>
-            </div>
-            <div className="right-section"></div>
-        </div>
-    );
-}

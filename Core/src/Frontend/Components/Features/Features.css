@@ -17,8 +17,9 @@
     align-items: center;
    /* border: 3px solid red; */
     column-gap: 30px;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: auto;
+    margin-bottom: 50px;
 }
 
 .featureIcons{

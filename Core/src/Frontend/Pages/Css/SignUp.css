@@ -13,6 +13,7 @@
     padding: 3rem;
     box-sizing: border-box;
     background-color: #f9f9f9;
+    margin-top: 50px;
     
 }
 
@@ -23,8 +24,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: slideIn 1.5s ease-in-out;
-    animation-delay: 0.4s;
-    
+    animation-delay: 0.4s;    
     
 }
 
@@ -119,3 +119,28 @@
     background-position: center;
     background-size: cover;
 }
+
+.terms-and-conditions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.terms-and-conditions input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #b30d0d;
+}
+
+.terms-and-conditions label {
+    color: #666;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.terms-and-conditions label:hover {
+    color: #b30d0d;
+}
+

@@ -4,26 +4,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { signInWithGoogle, signUp } from '../../../Backend/Auth/auth';
 import { useNavigate } from 'react-router';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
-        name: '',
+        firstName: '',
+        lastName: '', 
         email: '',
-        password: ''
+        password: '',
     });
+
+    const [confirmPassword, setConfirmPassword] = useState(''); //confirm password
+    const [errorPassword, setErrorPassword] = useState(''); //error password
+    
+    {/* For password validation*/}
+    const comparePassword = ()=>{
+        if(formData.password === confirmPassword){
+            return true
+            
+        }else{
+            setErrorPassword('Password does not match')
+            return <FontAwesomeIcon icon={faCheckCircle} style={{color: '#4CAF50'}} />
+        }
+    }
+    const [termsAndConditions, setTermsAndConditions] = useState(false); //terms and conditions 
+
+
     const [error, setError] = useState('');
     const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        setTermsAndConditions(false)
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.name && formData.email && formData.password) {
+        if (formData.firstName && formData.lastName && formData.email && formData.password && comparePassword() && termsAndConditions) {
             setError('');
             handleSignUp();
-            console.log("Form Submitted", formData); // Handle form submission logic here
+           console.log("Form Submitted", formData, comparePassword(), termsAndConditions); // Handle form submission logic here*
         } else {
             setError('Please fill in all fields');
         }
@@ -62,14 +82,27 @@ export default function SignUp() {
                     <div className="input-group">
                         <input
                             type="text"
-                            name="name"
-                            value={formData.name}
+                            name="firstName"
+                            value={formData.firstName}
                             onChange={handleChange}
                             required
                             autoComplete='off'
-                            id='name'
+                            id='firstName'
                         />
-                        <label htmlFor='name'>Name</label>
+                        <label htmlFor='firstName'>First Name</label>
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            required
+                            autoComplete='off'
+                            id='lastName'
+                        />
+                        <label htmlFor='lastName'>Last Name</label>
                     </div>
                     <div className="input-group">
                         <input
@@ -95,6 +128,32 @@ export default function SignUp() {
                             id='password'
                         />
                         <label htmlFor='password'>Password</label>
+                    </div>
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            value={confirmPassword}
+                            onChange={(e)=>setConfirmPassword(e.target.value)}
+                            required
+                            autoComplete='off'
+                            id='confirmPassword'
+                        />
+                        <label htmlFor='confirmPassword'>Confirm Password</label>
+                    </div>
+                    {/* For password validation*/}
+                    <p className='error'>{errorPassword}</p>
+
+                    <div className="terms-and-conditions">
+                        <input
+                            type="checkbox"
+                            name="termsAndConditions"
+                            value= 'termsAndConditions'
+                            onChange={()=>setTermsAndConditions(!termsAndConditions)}
+                            checked={termsAndConditions}
+                            id='termsAndConditions'
+                        />
+                        <label htmlFor='termsAndConditions'>Accept Terms and Conditions</label>
                     </div>
                     {error && <p className="error">{error}</p>}
                     <button onClick={handleSubmit} type="submit">Sign Up</button>

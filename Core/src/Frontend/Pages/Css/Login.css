@@ -22,6 +22,7 @@
   /* Left section styling */
   .login-wrapper .left-section {
     width: 40%;
+    height: 100%;
     background-color: #b30d0d;
     color: white;
     display: flex;

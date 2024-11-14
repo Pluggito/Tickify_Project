@@ -6,6 +6,13 @@ export const signUp = async(email,password) => {
     return createUserWithEmailAndPassword(auth,email,password);
 };
 
+
+// export const signUp = async (email, password, username) => {
+//     await createUserWithEmailAndPassword(auth, email, password);
+  
+//     await updateProfile(auth.currentUser, { displayName: username });
+//   };
+
 //THIS IS THE METHOD TO LOG A USER IN
 export const logIn = async(email,password) => {
     return signInWithEmailAndPassword(auth,email,password);

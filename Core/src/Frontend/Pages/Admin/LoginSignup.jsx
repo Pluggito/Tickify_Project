@@ -17,6 +17,7 @@ export default function TicketLogin() {
   // CURRENTUSER VARIABLE CONTAINS THE CURRENT USER
   // USERLOGGEDIN VARIABLE CONTAINS THE BOOLEAN FOR WEATHER A USER IS LOGGED IN
   const { currentUser, userLoggedIn  } = useAuth();
+  console.log(currentUser?.displayName,currentUser?.photoURL )
   const navigate = useNavigate()
 
 //THIS IS THE FUNCTION TO LOGIN 

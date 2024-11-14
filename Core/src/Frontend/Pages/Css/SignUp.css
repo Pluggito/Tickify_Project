@@ -17,6 +17,8 @@
     padding: 2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: #000;
+    animation: slideIn 2s ease-out;
+    animation-delay: 0.1s;
 }
 
 .heading{ 
@@ -172,4 +174,13 @@
 .terms-and-conditions label{
     margin-left: 10px;
     display: inline-block;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }

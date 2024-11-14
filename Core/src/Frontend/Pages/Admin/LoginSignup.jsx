@@ -56,6 +56,7 @@ const login = async (e) =>{
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            autoComplete='off'
         />
         <label htmlFor="email">Email</label>
         </div>

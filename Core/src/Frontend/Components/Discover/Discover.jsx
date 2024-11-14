@@ -9,6 +9,7 @@ export default function Discover(){
         
 
     return(
+        <>
         <div className="container"> 
         <div className='dicoverBlock'>
         <h1 className='discover'>Discover</h1>
@@ -21,32 +22,62 @@ export default function Discover(){
                     <img src={photo1} alt='display 1' className='photo photo1' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>
+                    <p className='testing'>Event Name</p>
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo2' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>                    
+                    <p className='testing'>Event Name</p>  
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>                  
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
                     <p className='testing'>Tickets Available</p>
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
+                </div>
+                <div className='discoverEvents'>
+                    <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
+                    <p className='month'>AUG</p>
+                    <p className='date'>20th</p>
+                    <p className='testing'>Tickets Available</p>
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
+                </div>
+                <div className='discoverEvents'>
+                    <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
+                    <p className='month'>AUG</p>
+                    <p className='date'>20th</p>
+                    <p className='testing'>Tickets Available</p>
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
+                </div>
+                <div className='discoverEvents'>
+                    <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
+                    <p className='month'>AUG</p>
+                    <p className='date'>20th</p>
+                    <p className='testing'>Tickets Available</p>
+                    <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
 
             </div>
-
-
-            <div className='eventCreation'>
-                <h2>Make your own Event</h2>
-                <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-                <button className='eventButton'><Link to="/Tickify_Project/create-events" style={{ textDecoration: 'none', color: 'white' }}>Create Events</Link></button>
-            </div>
-
-       
+            <div className='discoverButtonContainer'>
+            <p className='discoverButton'><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: '#b30d0d' }} className='discoverButton-text'>View All Events</Link></p>
+            </div>                  
         </div>
+
+        <div className='eventCreation'>
+        <div className='eventCreation-container'>
+        <h2>Make your own Event</h2>
+        <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
+        <button className='eventButton'><Link to="/Tickify_Project/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
+        </div>
+
+        </div>
+
+        </>
+        
     )
 }
 

@@ -3,8 +3,8 @@ import logo from '../../assets/Logo 1.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { signOut } from '../../../Backend/Auth/auth';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons'; */
 
 // THIS IS THE NAVBAR FOR THE TICKET SITE
 

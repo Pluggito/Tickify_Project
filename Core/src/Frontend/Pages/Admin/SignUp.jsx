@@ -1,170 +1,139 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import '../Css/SignUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { signInWithGoogle, signUp } from '../../../Backend/Auth/auth';
 import { useNavigate } from 'react-router';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+// import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'; //i have removed this icon 
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
         firstName: '',
-        lastName: '', 
+        lastName: '',
         email: '',
         password: '',
-    });
-
-    const [confirmPassword, setConfirmPassword] = useState(''); //confirm password
-    const [errorPassword, setErrorPassword] = useState(''); //error password
-    
-    {/* For password validation*/}
-    const comparePassword = ()=>{
-        if(formData.password === confirmPassword){
-            return true
-            
-        }else{
-            setErrorPassword('Password does not match')
-            return <FontAwesomeIcon icon={faCheckCircle} style={{color: '#4CAF50'}} />
-        }
-    }
-    const [termsAndConditions, setTermsAndConditions] = useState(false); //terms and conditions 
-
-
+    })
+   const [termsAndConditions, setTermsAndConditions] = useState(false);
     const [error, setError] = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    // Validation function
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        setTermsAndConditions(false)
+        setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formData.firstName && formData.lastName && formData.email && formData.password && comparePassword() && termsAndConditions) {
+        if (formData.firstName && formData.lastName && formData.email && formData.password && termsAndConditions) {
             setError('');
             handleSignUp();
-           console.log("Form Submitted", formData, comparePassword(), termsAndConditions); // Handle form submission logic here*
+            console.log("Form Submitted", formData);
         } else {
-            setError('Please fill in all fields');
+            if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !termsAndConditions) {
+                setError('Please fill in all fields');
+            }
         }
     };
 
-    //ETTY
-    //SIGN-UP METHOND
-    const handleSignUp = async ()=> {
+    // Sign-up method
+    const handleSignUp = async () => {
         try {
-            
-          await  signUp(formData.email,formData.password)
-          navigate('/Tickify_Project/')
+            await signUp(formData.email, formData.password);
+            navigate('/Tickify_Project/');
         } catch (err) {
-            setError(err.message)
-  
+            setError(err.message);
         }
-    }
-    //SIGN-IN WITH GOOGLE METHOD
-    const handleSignInWithGoogle = async() =>{
+    };
+
+    // Google sign-in method
+    const handleSignInWithGoogle = async () => {
         try {
-
-           await signInWithGoogle()
-           navigate('/Tickify_Project/')
+            await signInWithGoogle();
+            navigate('/Tickify_Project/');
         } catch (err) {
-            setError(err.message)
-
+            setError(err.message);
         }
-    }
+    };
 
+    //CAREW
+    // I did a redesign of the sign up page
     return (
-        <div className="sign-up-content">
-            
-            <div className="sign-up-left-section">
-                <form >
-                    <h2>Create Account</h2>
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                            autoComplete='off'
-                            id='firstName'
-                        />
-                        <label htmlFor='firstName'>First Name</label>
-                    </div>
+        <div className="signup-container">
+            <div className="signup-content">
+            <FontAwesomeIcon icon={faCircleXmark} className="close-icon" onClick={() => navigate('/Tickify_Project/login-sign-up')} size='lg'/>
+                <div className="heading">
+                <h1>Create an account</h1>
+                </div>
 
-                    <div className="input-group">
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                            autoComplete='off'
-                            id='lastName'
-                        />
-                        <label htmlFor='lastName'>Last Name</label>
+                <div className='sign-up-socials'>
+                <button className="social-button facebook">
+                    <FontAwesomeIcon icon={faFacebook} size='lg'/>
+                    <span>Sign up with Facebook</span>
+                    </button>
+                    <button className="social-button google" onClick={handleSignInWithGoogle}>
+                    <FontAwesomeIcon icon={faGoogle} size='lg'/>
+                    <span>Sign up with Google</span>
+                    </button>
+                    <div className="separator">
+                    <span>OR</span>
                     </div>
-                    <div className="input-group">
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            autoComplete='off'
-                            id='email'
-                            
-                        />
-                        <label htmlFor='email'>Email</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                            autoComplete='off'
-                            id='password'
-                        />
-                        <label htmlFor='password'>Password</label>
-                    </div>
-                    <div className="input-group">
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={confirmPassword}
-                            onChange={(e)=>setConfirmPassword(e.target.value)}
-                            required
-                            autoComplete='off'
-                            id='confirmPassword'
-                        />
-                        <label htmlFor='confirmPassword'>Confirm Password</label>
-                    </div>
-                    {/* For password validation*/}
-                    <p className='error'>{errorPassword}</p>
+                </div>    
+                <form>
+                <div className="name-fields">
+                    <input type="text" 
+                    placeholder="First name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    autoComplete='off'
+                    required />
 
-                    <div className="terms-and-conditions">
-                        <input
-                            type="checkbox"
-                            name="termsAndConditions"
-                            value= 'termsAndConditions'
-                            onChange={()=>setTermsAndConditions(!termsAndConditions)}
-                            checked={termsAndConditions}
-                            id='termsAndConditions'
-                        />
-                        <label htmlFor='termsAndConditions'>Accept Terms and Conditions</label>
-                    </div>
-                    {error && <p className="error">{error}</p>}
-                    <button onClick={handleSubmit} type="submit">Sign Up</button>
-                    <p style={{color: '#b30d0d',textAlign: 'center', marginTop: '10px'}}>Or</p>
-                    <div style={{justifyContent: 'center', marginTop: '30px', padding: '0 7rem'}}>
-                        <FontAwesomeIcon icon={faGoogle} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} onClick={handleSignInWithGoogle} />
-                    </div>
-                </form> 
+                    <input type="text" 
+                    placeholder="Last name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    autoComplete='off'
+                    required />
+                </div>
+                
+                <input type="email"
+                 placeholder="Email address" 
+                 name="email"
+                 value={formData.email}
+                 onChange={handleChange}
+                 autoComplete='off'
+                required />
+
+                <input type="password"
+                placeholder="Password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                autoComplete='off'
+                required />
+
+                <div className='terms-and-conditions'>
+                <input type='checkbox'
+                id='termsAndConditions'
+                name='termsAndConditions'
+                checked={termsAndConditions}
+                onChange={() => setTermsAndConditions(!termsAndConditions)}
+                required />
+
+                <label htmlFor="termsAndConditions">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                {error && <p className="error" style={{color: 'red'}}>{error}</p>}
+                <button type="submit" className="submit-button" onClick={handleSubmit}>
+                    Sign up
+                </button>
+                </form>   
             </div>
-
-            <div className='right-section'></div>
         </div>
-    );
+
+    )
+      
 }

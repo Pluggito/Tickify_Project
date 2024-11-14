@@ -25,11 +25,11 @@ export default function Navbar() {
       </div>
 
       <ul>
-        <li><Link to="/Tickify_Project/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link></li>
-        <li><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: 'black' }}>Discover</Link></li>
-        <li><Link to="/Tickify_Project/advert" style={{ textDecoration: 'none', color: 'black' }}>Advert</Link></li>
-        <li><Link to="/Tickify_Project/pricing" style={{ textDecoration: 'none', color: 'black' }}>Pricing</Link></li>
-        <li><Link to="/Tickify_Project/contact" style={{ textDecoration: 'none', color: 'black' }}>Contact</Link></li>
+        <li><Link to="/Tickify_Project/" className='links'>Home</Link></li>
+        <li><Link to="/Tickify_Project/discovers"className='links' >Discover</Link></li>
+        <li><Link to="/Tickify_Project/advert" className='links'>Advert</Link></li>
+        <li><Link to="/Tickify_Project/pricing" className='links'>Pricing</Link></li>
+        <li><Link to="/Tickify_Project/contact" className='links'>Contact</Link></li>
 
         {/* THIS IS THE ICON FOR THE USER */}
          {/*<FontAwesomeIcon icon={faUser} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} />*/} 

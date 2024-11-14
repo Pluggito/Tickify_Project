@@ -36,7 +36,7 @@ nav ul li::after{
     width: 0;
     height: 3px;
     left: 0;
-    bottom: -2px;
+    bottom: -3px;
     cursor: pointer;
     align-self: center;
     background-color: #b30d0d;
@@ -48,7 +48,14 @@ nav ul li::after{
 nav ul li:hover::after{
     width: 100%;
 }
-nav ul li:hover{
+
+.links{
+    text-decoration: none;
+    color: black;
+    font-family: var(--font-family);
+}
+
+.links:hover{
     color: var(--primary-color);
 
 }

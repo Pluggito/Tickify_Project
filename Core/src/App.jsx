@@ -12,6 +12,7 @@ import Pricing from './Frontend/Pages/Pricing';
 import Contact from './Frontend/Pages/Contact';
 import SignUp from './Frontend/Pages/Admin/SignUp';
 import ForgetPaswword from './Frontend/Pages/Admin/ForgetPassword';
+import CreateEvents from './Frontend/Pages/CreateEvents'
 import { AuthProvider } from './Backend/context/AuthContext';
 
 
@@ -42,7 +43,9 @@ const App = () => {
         {/*Login page*/}
         <Route path="/Tickify_Project/login-sign-up" element={<LoginSignUp />} />
         <Route path="/Tickify_Project/sign-up" element={<SignUp />} />    
-        <Route path='/Tickify_Project/forgetpassword' element={<ForgetPaswword />} />    
+        <Route path='/Tickify_Project/forgetpassword' element={<ForgetPaswword />} /> 
+        <Route path='/Tickify_Project/create-events' element={<CreateEvents />} />
+
       </Routes>
     </Router>
     </AuthProvider>

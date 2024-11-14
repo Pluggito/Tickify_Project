@@ -1,3 +1,5 @@
+
+
 .heroSection
 {
     display: flex;
@@ -9,6 +11,7 @@
     margin-top: 50px ;
     margin-left: 20px;
 }
+
 
 .heroSection img{
     object-position: center;

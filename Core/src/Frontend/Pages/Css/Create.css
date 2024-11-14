@@ -1,0 +1,61 @@
+.Event-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    
+    background-image: linear-gradient( rgba(0,0,0,0.4), rgba(0,0,0,0.6)),url('../../assets/background image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.Event-form{
+    border-radius: 20px;
+    
+    background: linear-gradient(30deg, #b30d0d,rgba(0,0,0,0.7));
+    box-shadow: 0 4px 8px #000;
+    max-width: 1200px;
+    padding: 15px 8%;
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  form input,
+  form textarea {
+    width: 600px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: outline 0.5s ;
+    z-index: 2;
+  }
+
+  form input:hover{
+    outline: #b30d0d;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+
+    .first-content {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        /* border: 3px solid blue; */
+        margin-bottom: 35px;
+        padding-bottom: 10px;        
+  }
+

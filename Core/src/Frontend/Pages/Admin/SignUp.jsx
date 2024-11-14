@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../Css/SignUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { signInWithGoogle, signUp } from '../../../Backend/Auth/auth';
 import { useNavigate } from 'react-router';
 // import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'; //i have removed this icon 
@@ -70,8 +70,8 @@ export default function SignUp() {
 
                 <div className='sign-up-socials'>
                 <button className="social-button facebook">
-                    <FontAwesomeIcon icon={faFacebook} size='lg'/>
-                    <span>Sign up with Facebook</span>
+                    <FontAwesomeIcon icon={faXTwitter} size='lg'/>
+                    <span>Sign up with X</span>
                     </button>
                     <button className="social-button google" onClick={handleSignInWithGoogle}>
                     <FontAwesomeIcon icon={faGoogle} size='lg'/>

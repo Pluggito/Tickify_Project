@@ -13,6 +13,7 @@ import Contact from './Frontend/Pages/Contact';
 import SignUp from './Frontend/Pages/Admin/SignUp';
 import ForgetPaswword from './Frontend/Pages/Admin/ForgetPassword';
 import { AuthProvider } from './Backend/context/AuthContext';
+import TestPage from './Backend/Auth/TestPage';
 
 
 const App = () => {
@@ -43,6 +44,9 @@ const App = () => {
         <Route path="/Tickify_Project/login-sign-up" element={<LoginSignUp />} />
         <Route path="/Tickify_Project/sign-up" element={<SignUp />} />    
         <Route path='/Tickify_Project/forgetpassword' element={<ForgetPaswword />} />    
+
+        {/* MY TEST PAGE */}
+        <Route path='/Tickify_Project/testPage' element={ <TestPage/>} />
       </Routes>
     </Router>
     </AuthProvider>

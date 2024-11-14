@@ -1,5 +1,6 @@
 .container{
     padding: 25px 8%;
+    
 }
 
 .discover
@@ -87,6 +88,12 @@
 
 }
 
+.event-name{
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 30px;
+}
+
 .discoverButton{
    display: flex;
    justify-content: center;
@@ -97,7 +104,7 @@
    border-radius: 30px;
    border: 3px solid var(--primary-color);
    color: black;
-   padding: 1.1rem 0;
+   padding: 1.1rem 0.5rem;
    cursor: pointer;
    transition: all 0.5s;
    width: 215px;
@@ -116,7 +123,7 @@
 }
 
 .discoverButton-text:hover{
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
 
 

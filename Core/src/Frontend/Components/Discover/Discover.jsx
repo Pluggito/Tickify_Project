@@ -22,52 +22,67 @@ export default function Discover(){
                     <img src={photo1} alt='display 1' className='photo photo1' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
+                    <div className='event-name'>
                     <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo2' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Event Name</p>  
+                    <div className='event-name'>
+                    <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>                  
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>
+                    <div className='event-name'>
+                    <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>
+                    <div className='event-name'>
+                    <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>
+                    <div className='event-name'>
+                    <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
                 <div className='discoverEvents'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
-                    <p className='testing'>Tickets Available</p>
+                    <div className='event-name'>
+                    <p className='testing'>Event Name</p>
+                    </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
 
             </div>
             <div className='discoverButtonContainer'>
-            <p className='discoverButton'><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: '#b30d0d' }} className='discoverButton-text'>View All Events</Link></p>
+            <p className='discoverButton'><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: '#b30d0d',fontSize: '1.2rem' }} className='discoverButton-text'>View All Events</Link></p>
             </div>                  
         </div>
 
         <div className='eventCreation'>
+            <div>
+
+            </div>
         <div className='eventCreation-container'>
         <h2>Make your own Event</h2>
         <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
@@ -83,3 +98,4 @@ export default function Discover(){
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(<Discover />);
+

@@ -29,7 +29,7 @@ const login = async (e) =>{
         //YOU CAN ADD LOADING ANIMATION HERE.....
 
         //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-        navigate('/Tickify_Project/')
+        navigate('/')
     } catch (error) {
         console.error(error.message)
     }
@@ -71,9 +71,9 @@ const login = async (e) =>{
         />
         <label htmlFor="password">Password</label>
         </div>
-          <p>Forgot password? <Link to="/Tickify_Project/forgetpassword"style={{cursor: 'pointer', color: '#b30d0d'}}>Click here</Link></p>
+          <p>Forgot password? <Link to="/forgetpassword"style={{cursor: 'pointer', color: '#b30d0d'}}>Click here</Link></p>
           <button type="submit" className="login-btn" onClick={login}>Log In</button>
-          <p className="signup-text" style={{color: 'black'}}>{text}<Link to="/Tickify_Project/sign-up">Sign Up</Link></p>
+          <p className="signup-text" style={{color: 'black'}}>{text}<Link to="/sign-up">Sign Up</Link></p>
         </form>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import { useState } from "react"
-import './Css/Create.css'
+import '../Css/Create.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-icons";
+import CreateEventDetails from "./CreateEventDetails";
 
 
 export default function CreateEvents (){
@@ -157,9 +158,11 @@ export default function CreateEvents (){
                        
             </form>
 
-          
-          
+          <CreateEventDetails  name={eventDetails.name} day={eventDetails.day} month={eventDetails.month} />
+
         </div>
+
+        
     )
 }
 

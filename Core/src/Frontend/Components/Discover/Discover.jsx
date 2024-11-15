@@ -4,9 +4,12 @@ import photo1 from '../../assets/pexels-foteros-352505.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import '../../Pages/CreateEvents';
 
-export default function Discover(){
+
+export default function Discover({}){
         
+//trying to get the event details from the create events page
 
     return(
         <>

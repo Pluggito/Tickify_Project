@@ -42,7 +42,7 @@ export default function SignUp() {
     const handleSignUp = async () => {
         try {
             await signUp(formData.email, formData.password);
-            navigate('/Tickify_Project/');
+            navigate('/');
         } catch (err) {
             setError(err.message);
         }
@@ -52,7 +52,7 @@ export default function SignUp() {
     const handleSignInWithGoogle = async () => {
         try {
             await signInWithGoogle();
-            navigate('/Tickify_Project/');
+            navigate('/');
         } catch (err) {
             setError(err.message);
         }
@@ -63,7 +63,7 @@ export default function SignUp() {
     return (
         <div className="signup-container">
             <div className="signup-content">
-            <FontAwesomeIcon icon={faCircleXmark} className="close-icon" onClick={() => navigate('/Tickify_Project/login-sign-up')} size='lg'/>
+            <FontAwesomeIcon icon={faCircleXmark} className="close-icon" onClick={() => navigate('/login-sign-up')} size='lg'/>
                 <div className="heading">
                 <h1>Create an account</h1>
                 </div>

@@ -25,11 +25,11 @@ export default function Navbar() {
       </div>
 
       <ul>
-        <li><Link to="/Tickify_Project/" className='links'>Home</Link></li>
-        <li><Link to="/Tickify_Project/discovers"className='links' >Discover</Link></li>
-        <li><Link to="/Tickify_Project/advert" className='links'>Advert</Link></li>
-        <li><Link to="/Tickify_Project/pricing" className='links'>Pricing</Link></li>
-        <li><Link to="/Tickify_Project/contact" className='links'>Contact</Link></li>
+        <li><Link to="/" className='links'>Home</Link></li>
+        <li><Link to="/discovers"className='links' >Discover</Link></li>
+        <li><Link to="/advert" className='links'>Advert</Link></li>
+        <li><Link to="/pricing" className='links'>Pricing</Link></li>
+        <li><Link to="/contact" className='links'>Contact</Link></li>
 
         {/* THIS IS THE ICON FOR THE USER */}
          {/*<FontAwesomeIcon icon={faUser} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} />*/} 
@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* IF NO ONE IS LOGGED IN, IT WLL SHOW GET STARTED BUTTON */}
          {userLoggedIn ?  <p onClick={signOut} style={{cursor: 'pointer', color: '#b30d0d'}} >Logout</p>
 
-         : <button className='get-started'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>}
+         : <button className='get-started'><Link to="/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>}
         </div>
       </ul>
     </nav>

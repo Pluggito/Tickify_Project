@@ -9,7 +9,7 @@ import '../../Pages/CreateEvents';
 
 export default function Discover({}){
         
-
+//trying to get the event details from the create events page
 
     return(
         <>

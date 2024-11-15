@@ -6,6 +6,7 @@ import { faCalendar, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-
 
 export default function CreateEvents (){
 
+    //event details state
     const[eventDetails, setEventDetails] = useState ({
         name: '',
         venueName: '',
@@ -14,6 +15,7 @@ export default function CreateEvents (){
         day: '',
         month: '',
     });
+    //date input state
     const [dateInput, setDateInput] = useState('');
    
     

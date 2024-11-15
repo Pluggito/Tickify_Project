@@ -12,7 +12,8 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const  [currentUser,setCurrentUser] = useState(null)
+    const  [currentUser,setCurrentUser] = useState(null) 
+    const [currentUserUid,setCurrentUserUid] = useState(null)
     const  [userLoggedIn,setUserLoggedIn] = useState(false)
     const  [loading,setLoading] = useState(true)
 
@@ -25,6 +26,8 @@ export function AuthProvider({ children }) {
     async function initializeUser(user) {
         if (user) {
             setCurrentUser({...user})
+            const userUid = await user.uid
+            setCurrentUserUid(userUid)
             setUserLoggedIn(true)
         }else{
             setCurrentUser(null)
@@ -35,6 +38,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        currentUserUid,
         userLoggedIn,
         loading,
     }

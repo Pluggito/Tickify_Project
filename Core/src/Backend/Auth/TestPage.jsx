@@ -1,18 +1,25 @@
-import  { useState } from "react";
-import "../.././Frontend/Pages/Css/Login.css";
+import  { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { logIn,  signUp } from "./auth";
+import { getAllUsers, getUserProfile } from "../User/UserService";
 const TestPage = () => {
   const [logInEmail, setLoginEmail] = useState("");
   const [logInPassword, setLoginPassword] = useState("");
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSIgnInPassword] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
+  const [signInFirstname, setSignInFirstname] = useState("");
+  const [signInLastname, setSignInLastname] = useState("");
+  const [users,setUsers] = useState([])
+  const [profile, setProfile] = useState({})
   const [error, setError] = useState('');
 
-  const { currentUser } = useAuth();
+  const { currentUser ,currentUserUid } = useAuth();
 
-  console.log(currentUser.displayName)
+  useEffect(() => {
+    getUsersList(),
+    fetchUserInfo()
+  }, [])
+  
 
   //THIS IS THE FUNCTION TO LOGIN
   const handleLogin = async (e) => {
@@ -35,16 +42,43 @@ const TestPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUp(signInEmail, signInPassword,signInUsername);
+      await signUp(signInEmail, signInPassword,signInFirstname,signInLastname);
       //   navigate('/Tickify_Project/')
-      alert("Account was created for " + signInEmail);
+      getUsersList()
+      // alert("Account was created for " + signInEmail);
     } catch (err) {
       setError(err.message);
       console.error(error)
     }
   };
+
+  const getUsersList = async () => {
+
+    try {
+       const userList = await getAllUsers()
+
+     setUsers(userList)
+
+     console.log("Users",userList)
+    } catch (error) {
+      console.error(error.message)
+    }
+    
+  }
+
+const fetchUserInfo = async() =>{
+
+  try {
+      const userInfo = await getUserProfile(currentUserUid)
+  console.log(userInfo)
+  setProfile(userInfo)
+  } catch (error) {
+    console.error(error.message)
+  }
+
+}
   return (
-    <>
+    <div>
       {/* LOGIN */}
 
       <div>
@@ -71,10 +105,16 @@ const TestPage = () => {
       {/* SIGN UP */}
 
       <form>
+        <p>Sign in</p>
         <input
-          onChange={(e) => setSignInUsername(e.target.value)}
+          onChange={(e) => setSignInFirstname(e.target.value)}
           type="text"
-          placeholder="Username"
+          placeholder="FirstName"
+        />
+        <input
+          onChange={(e) => setSignInLastname(e.target.value)}
+          type="text"
+          placeholder="Lastname"
         />
         <input
           onChange={(e) => setSignInEmail(e.target.value)}
@@ -91,9 +131,25 @@ const TestPage = () => {
         </button>
       </form>
 
-      {/* PROFILE */}
-      <h2>{currentUser.email}</h2>
-    </>
+
+      {/* Users */}
+        {users?.map((user) => (
+          <div key={user.id}>
+              <button>{user?.email}</button>
+              {/* <button>{user.firstName}</button>
+              <button>{user.lastName}</button> */}
+          </div>
+        ))}
+
+        {/* Profile */}
+        <div>
+              <button>{profile?.email}</button>
+              <button>{profile?.firstName}</button>
+              <button>{profile?.lastName}</button>
+        </div>
+
+
+    </div>
   );
 };
 

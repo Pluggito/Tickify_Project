@@ -1,17 +1,22 @@
 import { useState } from "react"
 import './Css/Create.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faCircleXmark, faClock } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function CreateEvents (){
 
     const[eventDetails, setEventDetails] = useState ({
         name: '',
+        venueName: '',
         title: '',
         address: '',
+        day: '',
+        month: '',
     });
-
-    const [dateInput, setDateInput] = useState ('');
+    const [dateInput, setDateInput] = useState('');
+   
+    
 
 
     const getMonthAndDay = (dateString) => {
@@ -22,15 +27,33 @@ export default function CreateEvents (){
         return { month, day };
     }
 
-    const getInformation = () =>{
+    const handleConvert = () => {
+        const { month, day } = getMonthAndDay(dateInput);
+        setEventDetails(prevDetails => ({
+            ...prevDetails,
+            month,
+            day
+        }));
+    };
 
-    } 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEventDetails(prevDetails => ({
+            ...prevDetails,
+            [name]: value
+        }));
+    };
+
+    
+
+
+    
 
  return (
         <div className="Event-container">
             <form className="Event-form">
                 <FontAwesomeIcon icon={faCircleXmark} className="close-icon1" />
-             <div className="first-content" style={{borderBottom: '5px solid white'}}>
+             <div className="first-content" style={{borderBottom: '5px solid black'}}>
                         <h3>Event info</h3>
                         <p>Tell us more about your events</p>
                     </div>
@@ -44,7 +67,7 @@ export default function CreateEvents (){
                          id="event-name"
                          value={eventDetails.name}
                          placeholder="What is your event name?"
-                         onChange={(e) => setEventDetails(e.target.value)}
+                         onChange={handleInputChange}
                          />
 
                         </div>
@@ -53,29 +76,29 @@ export default function CreateEvents (){
                     <label htmlFor="event-name">Event Title</label> 
                         <input 
                         type="text"
-                         name="event-name"
-                         id="event-name"
-                         value={eventDetails.name}
+                         name="event-title"
+                         id="event-title"
+                         value={eventDetails.title}
                          placeholder="Tell us a bit about your event"
-                         onChange={(e) => setEventDetails(e.target.value)}
+                         onChange={handleInputChange}
                          />
 
                         </div>
                        
                         <div className="inputs">
-                        <label htmlFor="event-date">Event Date</label> 
+                        <label htmlFor="venue-name">Venue Name</label> 
 
                         <input 
-                        type="date"
-                         name="event-date"
-                         id="event-date"
-                         value={dateInput}
+                        type="text"
+                         name="venue-name"
+                         id="venue-name"
+                         value={eventDetails.venueName}
                          placeholder="Where will the events take place?"
-                         onChange={(e) => setDateInput(e.target.value)}/>
+                         onChange={handleInputChange}/>
                      </div>
 
                         <div className="inputs">
-                        <label htmlFor="event-address">Event Address</label> 
+                        <label htmlFor="event-address">Venue Address</label> 
 
                         <input 
                         type="text"
@@ -83,40 +106,56 @@ export default function CreateEvents (){
                          id="event-address"
                          value={eventDetails.address}
                          placeholder="Set the venue address"
-                         onChange={(e) => setEventDetails(e.target.value)}
+                         onChange={handleInputChange}
                          />
                         </div>
                     </div>
 
-                    <div className="third-content">
-                        <div className="third-content-container">
-                            <div className="third-content-container-left">
-                                <label>Start
-                                    <input type="time"
-                                     name="start-time" 
-                                     id="start-time" />
-                                </label>
-
-                                <input type='date'
-                                name="start-date"
-                                id="start-date" />
-                            </div>
-                            <div className="third-content-container-right">
-                            <label>End
-                                    <input type="time"
-                                     name="end-time" 
-                                     id="end-time" />
-                                </label>
-
-                                <input type='date'
-                                name="end-date"
-                                id="end-date" />
-                            </div>
-                         
+                    
+                    <div className="date-time-container">
+                    <div className="date-time-group">
+                        <span className="date-time-label">Starts</span>
+                        <div className="input-container">
+                            <FontAwesomeIcon icon={faCalendar} className="icon-group" />
+                            <input 
+                            type="date" 
+                            placeholder="Start date"
+                            value={dateInput}
+                            onChange={(e) => setDateInput(e.target.value)}
+                            />
+                        </div>
+                        <div className="input-container">
+                           <FontAwesomeIcon icon={faClock} className="icon-group" />
+                            <input 
+                            type="time"
+                            placeholder="Start time"/>
                         </div>
                     </div>
-           
+
+                   
+                    <div className ="date-time-group">
+                        <span className="date-time-label">Ends</span>
+                        <div className="input-container">
+                                <FontAwesomeIcon icon={faCalendar} className="icon-group" />
+                            <input 
+                            type="date" 
+                            placeholder="End date"
+                            id="end-date"
+                            name="end-date"/>
+                        </div>
+                        <div className="input-container">
+                                <FontAwesomeIcon icon={faClock} className="icon-group" />
+                            <input type="time" placeholder="End time" />
+                        </div>
+                    </div>
+                </div>
+            <div style={{textAlign: 'center'}}>
+            <p style={{color: 'black', font: 'bold 1.5rem Arial',cursor: "pointer"}} onClick={handleConvert}>Next</p>   
+            </div>
+                       
             </form>
+
+          
           
         </div>
     )

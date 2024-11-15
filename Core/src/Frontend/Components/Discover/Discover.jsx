@@ -78,7 +78,7 @@ export default function Discover(){
 
             </div>
             <div className='discoverButtonContainer'>
-            <p className='discoverButton'><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: '#b30d0d',fontSize: '1.2rem' }} className='discoverButton-text'>View All Events</Link></p>
+            <p className='discoverButton'><Link to="/discovers" style={{ textDecoration: 'none', color: '#b30d0d',fontSize: '1.2rem' }} className='discoverButton-text'>View All Events</Link></p>
             </div>                  
         </div>
 
@@ -89,7 +89,7 @@ export default function Discover(){
         <div className='eventCreation-container'>
         <h2>Make your own Event</h2>
         <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-        <button className='eventButton'><Link to="/Tickify_Project/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
+        <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
         </div>
 
         </div>

@@ -1,0 +1,54 @@
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Discover from "./Frontend/Components/Discover/Discover";
+import Features from "./Frontend/Components/Features/Features";
+import Footer from "./Frontend/Components/Footer/Footer";
+import Hero from "./Frontend/Components/Hero/Hero";
+import Navbar from "./Frontend/Components/Navbar/Navbar";
+import EventsCategory from './Frontend/Pages/EventsCategory';
+import About from './Frontend/Pages/About';
+import Advert from './Frontend/Pages/Advert';
+import LoginSignUp from './Frontend/Pages/Admin/LoginSignup';
+import Pricing from './Frontend/Pages/Pricing';
+import Contact from './Frontend/Pages/Contact';
+import SignUp from './Frontend/Pages/Admin/SignUp';
+import ForgetPaswword from './Frontend/Pages/Admin/ForgetPassword';
+import CreateEvents from './Frontend/Pages/CreateEvents';
+import { AuthProvider } from './Backend/context/AuthContext';
+import TestPage from './Backend/Auth/TestPage';
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route 
+            path="/#/" 
+            element={
+              <>
+                <Hero />
+                <Discover />
+                <Features />
+                <Footer />
+              </>
+            } 
+          />
+          <Route path="/#/discovers" element={<EventsCategory />} />
+          <Route path="/#/advert" element={<Advert />} />
+          <Route path="/#/about" element={<About />} />
+          <Route path="/#/pricing" element={<Pricing />} />
+          <Route path="/#/contact" element={<Contact />} />
+
+          {/* Login page */}
+          <Route path="/#/login-sign-up" element={<LoginSignUp />} />
+          <Route path="/#/sign-up" element={<SignUp />} />    
+          <Route path='/#/forgetpassword' element={<ForgetPaswword />} /> 
+          <Route path='/#/create-events' element={<CreateEvents />} />
+          <Route path='/#/test' element={<TestPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+};
+
+export default App;

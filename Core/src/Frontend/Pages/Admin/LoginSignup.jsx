@@ -4,13 +4,20 @@ import '../Css/Login.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { logIn } from '../../../Backend/Auth/auth';
+//import PreLoader from '../../../PreLoader';
+// import { motion } from "framer-motion";
+import { useEffect } from 'react';
+import ReactLoading from 'react-loading';
 
 // THIS IS THE LOGIN PAGE FOR THE TICKET BUYER
 
 export default function TicketLogin() {
+
+ 
+  // const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+ 
   // I DONT THINK WE NEED THIS
  //  const [isLoggedIn, setIsLoggedIn] = useState(false)
   
@@ -20,23 +27,60 @@ export default function TicketLogin() {
   console.log(currentUser?.displayName,currentUser?.photoURL )
   const navigate = useNavigate()
 
+
+  // RECONFIGURE
+ { /* useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000); // Simulate a preloading screen
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Logs current user info when user state changes
+    if (currentUser) {
+      console.log(currentUser?.displayName, currentUser?.photoURL);
+    }
+  }, [currentUser]); */}
+
+
 //THIS IS THE FUNCTION TO LOGIN 
 const login = async (e) =>{
-    e.preventDefault()
+    e.preventDefault();
+   // setLoading(true); // Show loader during login attempt
+    // setError(null); // Clear previous errors
+
     try {
-        await logIn(email,password);
+        await logIn(email,password)
+        navigate('/')
 
         //YOU CAN ADD LOADING ANIMATION HERE.....
-
-        //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-        navigate('/')
+         //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
+         
     } catch (error) {
         console.error(error.message)
     }
+    //Reconfigure it
+
+   {/* 
+    finally {
+    setLoading(false); // Hide loader
+   }
+    */ } 
 };
 
 
+
   const text = `Don't have an account? `;
+
+ {/* if (loading) {
+    // Show preloader while `loading` is true
+    return (
+      <div className="preloader-wrapper">
+        <ReactLoading type="spinningBubbles" color="#b30d0d" height={100} width={100} />
+      </div>
+    );
+ } */}
+
+
 
   return (
     <div className="login-wrapper">

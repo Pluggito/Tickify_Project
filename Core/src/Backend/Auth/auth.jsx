@@ -1,34 +1,51 @@
-import { auth } from "./firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { auth, db } from "./firebase";
+import { doc, setDoc } from "@firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
-//THIS IS THE METHOD FOR CREATION OF ACCOUNT
-export const signUp = async(email,password) => {
-    return createUserWithEmailAndPassword(auth,email,password);
+export const signUp = async (email, password, fName, lName) => {
+  try {
+    const userCred = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    const userId = userCred.user.uid;
+    const userRef = doc(db, "Users", userId);
+
+    const userData = {
+      firstName: fName,
+      lastName: lName,
+      email: email,
+      createdAt: new Date(),
+    };
+
+    await setDoc(userRef, userData);
+  } catch (error) {
+    console.error("Error signing up and adding user data: ", error.message);
+  }
 };
-
-
-// export const signUp = async (email, password, username) => {
-//     await createUserWithEmailAndPassword(auth, email, password);
-  
-//     await updateProfile(auth.currentUser, { displayName: username });
-//   };
 
 //THIS IS THE METHOD TO LOG A USER IN
-export const logIn = async(email,password) => {
-    return signInWithEmailAndPassword(auth,email,password);
+export const logIn = async (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
 };
-
 
 // THIS IS THE METHOD TO SIGN UP WITH GOOGLE
 export const signInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth,provider);
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
 
-    return result
+  return result;
 };
 
-
-// THIS IS THE METHOD TO LOGOUT 
+// THIS IS THE METHOD TO LOGOUT
 export const signOut = () => {
-    return auth.signOut();
+  return auth.signOut();
 };
+

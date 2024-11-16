@@ -3,6 +3,7 @@ import logo from '../../assets/Logo 1.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { signOut } from '../../../Backend/Auth/auth';
+
 /* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons'; */
 
@@ -10,10 +11,11 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'; */
 
 export default function Navbar() {
 
-  const { userLoggedIn , currentUser } = useAuth()
+  const { userLoggedIn , currentUser } = useAuth();
   
   return (
-    <nav>
+  
+     <nav>
       <div className='info'>
         <img src={logo} alt='logo'/>
         <h1 style={{ cursor: 'pointer' }}>Tickify.click</h1>
@@ -44,5 +46,8 @@ export default function Navbar() {
         </div>
       </ul>
     </nav>
+ 
+   
+    
   );
 }

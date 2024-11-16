@@ -4,10 +4,16 @@ import photo1 from '../../assets/pexels-foteros-352505.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import '../../Pages/CreateEvent/CreateEvents';
+
 
 
 
 export default function Discover(){
+
+  {/* const dayinfo = props.day;
+    const monthinfo = props.month;
+    const name = props.eventdetails; */}  
         
 //trying to get the event details from the create events page
 
@@ -21,7 +27,7 @@ export default function Discover(){
          
 
             <div className='events'>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-1'>
                     <img src={photo1} alt='display 1' className='photo photo1' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -30,7 +36,7 @@ export default function Discover(){
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-2'>
                     <img src={photo1} alt='display 1' className='photo photo2' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -39,7 +45,7 @@ export default function Discover(){
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>                  
                 </div>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-3'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -48,7 +54,7 @@ export default function Discover(){
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-4'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -57,7 +63,7 @@ export default function Discover(){
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-5'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -66,7 +72,7 @@ export default function Discover(){
                     </div>
                     <FontAwesomeIcon icon={faArrowRight} className='iconArrow1' size='1x'/>
                 </div>
-                <div className='discoverEvents'>
+                <div className='discoverEvents box-6'>
                     <img src={photo1} alt='display 1' className='photo photo3' loading="lazy"/>
                     <p className='month'>AUG</p>
                     <p className='date'>20th</p>
@@ -78,7 +84,7 @@ export default function Discover(){
 
             </div>
             <div className='discoverButtonContainer'>
-            <p className='discoverButton'><Link to="/Tickify_Project/discovers" style={{ textDecoration: 'none', color: '#b30d0d',fontSize: '1.2rem' }} className='discoverButton-text'>View All Events</Link></p>
+            <p className='discoverButton'><Link to="/discovers" style={{ textDecoration: 'none', color: '#b30d0d',fontSize: '1.2rem' }} className='discoverButton-text'>View All Events</Link></p>
             </div>                  
         </div>
 
@@ -89,7 +95,7 @@ export default function Discover(){
         <div className='eventCreation-container'>
         <h2>Make your own Event</h2>
         <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-        <button className='eventButton'><Link to="/Tickify_Project/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
+        <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
         </div>
 
         </div>

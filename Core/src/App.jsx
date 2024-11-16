@@ -18,7 +18,7 @@ import TestPage from './Backend/Auth/TestPage';
 
 const App = () => {
   return (
-    <AuthProvider>
+     <AuthProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -49,7 +49,7 @@ const App = () => {
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </Router>
-    </AuthProvider>
+    </AuthProvider> 
   );
 };
 

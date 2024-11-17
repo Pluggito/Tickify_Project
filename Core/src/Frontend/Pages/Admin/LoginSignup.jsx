@@ -24,9 +24,6 @@ export default function TicketLogin() {
   //THIS IS THE FUNCTION TO LOGIN
   const login = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loader during login attempt
-    // setError(null); // Clear previous errors
-
     try {
       await logIn(email, password);
       //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
@@ -36,7 +33,7 @@ export default function TicketLogin() {
     } finally {
       setLoading(false); // Hide loader
     }
-  };
+
 
   const text = `Don't have an account? `;
 

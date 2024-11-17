@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 120vh;
+    height: 140vh;
     
 }
 
@@ -118,5 +118,56 @@ form label {
     margin-bottom: 10px;
     font-size: 1.2rem;
     z-index: 2;
-    
   }
+
+  .next-phase
+  {
+    color: var(--primary-color);
+    background: transparent;
+    border: 4px solid #f9f9f9;
+    margin-top: 10px;
+    width: 225px;
+    height: 50px;
+    font-weight: 500;
+    font-family: 'Space Grotesk';
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+    padding: auto;
+  }
+
+  .next-phase:hover{
+    transform: scale(1.05);
+    background-color: #b30d0d;
+    color: #f9f9f9;
+  }
+
+  .imageInput{
+    align-self: center;
+    padding: 1rem;
+    width: 500px;
+  }
+
+  .imageInput input{
+    max-width: 300px;
+    outline: none; 
+    border-radius: 25px;   
+  }
+
+.upload-button{
+    background-color: transparent;
+    color: var(--primary-color);
+    width: 150px;
+    height: 50px;
+    border: 2px solid #f9f9f9;
+    border-radius: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.upload-button:hover{
+  transform: scale(1.05);
+  background-color: #b30d0d;
+  color: #f9f9f9;
+}

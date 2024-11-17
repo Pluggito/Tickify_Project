@@ -9,6 +9,8 @@ import '../../Pages/CreateEvent/CreateEvents';
 
 
 
+
+
 export default function Discover(){
 
   {/* const dayinfo = props.day;

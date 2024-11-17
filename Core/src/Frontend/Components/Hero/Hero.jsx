@@ -1,4 +1,4 @@
-import displayPhoto from '../../assets/background image.jpg';
+import displayPhoto from '../../assets/background image compressed.jpg';
 import './Hero.css';
 import { motion } from 'framer-motion';
 // import splashImage from '../../assets/Splash-image.png';

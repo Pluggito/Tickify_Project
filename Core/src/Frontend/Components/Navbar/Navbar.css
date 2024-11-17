@@ -15,11 +15,11 @@ nav{
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
-    width: 100%;
+   /* width: 100%;*/
     top: 0;
     background-color: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid #e5e5e5;
-    max-width: 1540px;
+    /* max-width: 1540px; */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -98,4 +98,15 @@ nav img{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.user-icon{
+    cursor: pointer;
+    color: #000;
+    align-self: center;
+    transition: all 0.5s;
+}
+
+.user-icon:hover{
+    color: var(--primary-color);
 }

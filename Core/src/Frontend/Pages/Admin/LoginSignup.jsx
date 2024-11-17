@@ -24,6 +24,7 @@ export default function TicketLogin() {
   //THIS IS THE FUNCTION TO LOGIN
   const login = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await logIn(email, password);
       //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
@@ -66,7 +67,7 @@ export default function TicketLogin() {
             <input
               type="email"
               id="email"
-              placeholder=" "
+              placeholder=""
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -78,7 +79,7 @@ export default function TicketLogin() {
             <input
               type="password"
               id="password"
-              placeholder=" "
+              placeholder=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

@@ -179,7 +179,7 @@ export default function CreateEvents() {
           <p style={{ color: "red", textAlign: "center" }}>{validation}</p>
           <div style={{ textAlign: "center" }}>
             <button onClick={handleNextPhase} className="next-phase">
-              Next
+              Continue
             </button>
           </div>
         </form>
@@ -188,25 +188,7 @@ export default function CreateEvents() {
       {/* Phase 2: Confirmation */}
       {currentPhase === 2 && (
         <div className="Event-form">
-          <h3>Event Confirmation</h3>
-          <p>Review your event details</p>
-          <ul>
-            <li>
-              <strong>Event Name:</strong> {eventDetails.name}
-            </li>
-            <li>
-              <strong>Title:</strong> {eventDetails.title}
-            </li>
-            <li>
-              <strong>Venue:</strong> {eventDetails.venueName}, {eventDetails.address}
-            </li>
-            <li>
-              <strong>Starts:</strong> {eventDetails.date} at {eventDetails.time}
-            </li>
-            <li>
-              <strong>Ends:</strong> {eventDetails.endDate} at {eventDetails.endTime}
-            </li>
-          </ul>
+            
           <button onClick={() => alert("Event submitted!")}>Finish</button>
         </div>
       )}

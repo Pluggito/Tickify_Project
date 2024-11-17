@@ -49,12 +49,12 @@ export default function Navbar() {
 
         <div className="auth-menu">
           {userLoggedIn ? (
-            <div className="user-dropdown">
+            <div className="user-dropdown" style={{display: 'flex', alignItems: 'center'}}>
               <FontAwesomeIcon
                 icon={faUser}
-                size="2x"
-                style={{ color: '#b30d0d', cursor: 'pointer' }}
+                size="lg"
                 onClick={toggleDropdown}
+                className='user-icon'
               />
               {dropdownOpen && (
                 <div className="dropdown-menu">

@@ -3,15 +3,24 @@ import logo from '../../assets/Logo 1.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { signOut } from '../../../Backend/Auth/auth';
-
-/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; */
-
+ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons'; 
+import { useState } from 'react';
 // THIS IS THE NAVBAR FOR THE TICKET SITE
 
 export default function Navbar() {
 
   const { userLoggedIn , currentUser } = useAuth();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleSignOut = () => {
+    signOut();
+    setDropdownOpen(false); // Close dropdown after sign out
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prev) => !prev);
+  };
   
   return (
   
@@ -33,16 +42,38 @@ export default function Navbar() {
         <li><Link to="/pricing" className='links'>Pricing</Link></li>
         <li><Link to="/contact" className='links'>Contact</Link></li>
 
-        {/* THIS IS THE ICON FOR THE USER */}
-         {/*<FontAwesomeIcon icon={faUser} size="2x" style={{color: '#b30d0d', cursor: 'pointer'}} />*/} 
+      
+             
 
 
-        <div>
-          {/* IF THE USER IS LOGGED IN, IT WILL SHOW THE LOGOUT BUTTON */}
-          {/* IF NO ONE IS LOGGED IN, IT WLL SHOW GET STARTED BUTTON */}
-         {userLoggedIn ?  <p onClick={signOut} style={{cursor: 'pointer', color: '#b30d0d'}} >Logout</p>
 
-         : <button className='get-started'><Link to="/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>}
+        <div className="auth-menu">
+          {userLoggedIn ? (
+            <div className="user-dropdown">
+              <FontAwesomeIcon
+                icon={faUser}
+                size="2x"
+                style={{ color: '#b30d0d', cursor: 'pointer' }}
+                onClick={toggleDropdown}
+              />
+              {dropdownOpen && (
+                <div className="dropdown-menu">
+                  <ul>
+                    <li>
+                      <Link to="/profile" onClick={() => setDropdownOpen(false)}>Profile</Link>
+                    </li>
+                    <li onClick={handleSignOut}>Logout</li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button className="get-started">
+              <Link to="/login-sign-up" style={{ textDecoration: 'none', color: 'white' }}>
+                Get Started
+              </Link>
+            </button>
+          )}
         </div>
       </ul>
     </nav>

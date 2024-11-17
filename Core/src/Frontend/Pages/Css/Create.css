@@ -18,7 +18,7 @@
     /* background: linear-gradient(30deg, #b30d0d,rgba(0,0,0,0.7)); */
     background-color: #fff;
     box-shadow: 0 4px 8px #000;
-    max-width: 600px;
+    max-width: 950px;
     padding: 15px 8%;
 }
 
@@ -69,9 +69,9 @@ form label {
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
-    column-gap: 40px;
+    column-gap: 30px;
     align-items: center;
-    transform: translateX(-30px);
+    transform: translateX(-10px);
   
     
   }
@@ -98,7 +98,7 @@ form label {
     border-radius: 15px;
     margin-top: 20px;
   }
-
+  
   .input-container input{
     max-width: 150px;
     font-size: 1rem;
@@ -108,6 +108,7 @@ form label {
     background: transparent;
     letter-spacing: 1px;
     padding: auto;
+    align-self: center;
   }
 
   .icon-group{
@@ -147,12 +148,17 @@ form label {
     align-self: center;
     padding: 1rem;
     width: 500px;
+    margin-top: 20px;
+    
+
   }
 
   .imageInput input{
-    max-width: 300px;
+    max-width: 450px;
+    height: auto;
     outline: none; 
-    border-radius: 25px;   
+    border-radius: 10px;  
+    border: 2px solid var(--secondary-color); 
   }
 
 .upload-button{
@@ -164,6 +170,8 @@ form label {
     border-radius: 25px;
     margin-left: 10px;
     cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px #f9f9f9;
 }
 
 .upload-button:hover{
@@ -171,3 +179,43 @@ form label {
   background-color: #b30d0d;
   color: #f9f9f9;
 }
+
+.auth-menu {
+  position: relative;
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu li:hover {
+  background: #f5f5f5;
+  color: #b30d0d;
+}
+

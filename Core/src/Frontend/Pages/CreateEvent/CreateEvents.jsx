@@ -27,23 +27,25 @@ export default function CreateEvents() {
     }));
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImage(reader.result);
+      } 
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleNextPhase = (e) => {
     e.preventDefault();
-    if (currentPhase === 1) {
-      if (
-        eventDetails.name &&
-        eventDetails.title &&
-        eventDetails.venueName &&
-        eventDetails.address &&
-        eventDetails.date &&
-        eventDetails.time &&
-        image
-      ) {
-        setValidation("");
-        setCurrentPhase((prevPhase) => prevPhase + 1); // Move to the next phase
-      } else {
-        setValidation("Please fill in all fields before proceeding.");
-      }
+    const missingFields = Object.entries(eventDetails).filter(([key, value]) => !value);
+    if (missingFields.length > 0 || !image) {
+      setValidation(`Missing fields: ${missingFields.map(([key]) => key).join(', ')}`);
+    } else {
+      setValidation("");
+      setCurrentPhase((prevPhase) => prevPhase + 1);
     }
   };
 
@@ -53,59 +55,59 @@ export default function CreateEvents() {
       {currentPhase === 1 && (
         <form className="Event-form">
           <FontAwesomeIcon icon={faCircleXmark} className="close-icon1" />
-          <div className="first-content" style={{ borderBottom: "5px solid black" }}>
+          <div className="first-content">
             <h3>Event Info</h3>
             <p>Tell us more about your events</p>
           </div>
 
-          <div className="second-content">
-            <div className="inputs">
-              <label htmlFor="name">Event Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={eventDetails.name}
-                placeholder="What is your event name?"
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="inputs">
+            <label htmlFor="name">Event Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={eventDetails.name}
+              placeholder="What is your event name?"
+              onChange={handleInputChange}
+              autoComplete="off"
+            />
+          </div>
 
-            <div className="inputs">
-              <label htmlFor="title">Event Title</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                value={eventDetails.title}
-                placeholder="Tell us a bit about your event"
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="inputs">
+            <label htmlFor="title">Event Title</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={eventDetails.title}
+              placeholder="Tell us a bit about your event"
+              onChange={handleInputChange}
+            />
+          </div>
 
-            <div className="inputs">
-              <label htmlFor="venueName">Venue Name</label>
-              <input
-                type="text"
-                name="venueName"
-                id="venueName"
-                value={eventDetails.venueName}
-                placeholder="Where will the events take place?"
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="inputs">
+            <label htmlFor="venueName">Venue Name</label>
+            <input
+              type="text"
+              name="venueName"
+              id="venueName"
+              value={eventDetails.venueName}
+              placeholder="Where will the events take place?"
+              onChange={handleInputChange}
+            />
+          </div>
 
-            <div className="inputs">
-              <label htmlFor="address">Venue Address</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                value={eventDetails.address}
-                placeholder="Set the venue address"
-                onChange={handleInputChange}
-              />
-            </div>
+          <div className="inputs">
+            <label htmlFor="address">Venue Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              value={eventDetails.address}
+              placeholder="Set the venue address"
+              onChange={handleInputChange}
+              autoComplete="off"
+            />
           </div>
 
           <div className="date-time-container">
@@ -130,48 +132,60 @@ export default function CreateEvents() {
                 />
               </div>
             </div>
-            <div className ="date-time-group">
-                        <span className="date-time-label">Ends</span>
-                        <div className="input-container">
-                                <FontAwesomeIcon icon={faCalendar} className="icon-group" />
-                            <input 
-                            type="date" 
-                            placeholder="End date"
-                            id="end-date"
-                            name="end-date"
-                            value={eventDetails.endDate}
-                            onChange={handleInputChange}/>
-                        </div>
-                        <div className="input-container">
-                                <FontAwesomeIcon icon={faClock} className="icon-group" />
-                            <input type="time" placeholder="End time" 
-                            value={eventDetails.endTime}
-                            onChange={handleInputChange}/>
-                        </div>
-                    </div>
-                </div>
+            <div className="date-time-group">
+              <span className="date-time-label">Ends</span>
+              <div className="input-container">
+                <FontAwesomeIcon icon={faCalendar} className="icon-group" />
+                <input
+                  type="date"
+                  name="endDate"
+                  value={eventDetails.endDate}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="input-container">
+                <FontAwesomeIcon icon={faClock} className="icon-group" />
+                <input
+                  type="time"
+                  name="endTime"
+                  value={eventDetails.endTime}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+          </div>
 
-                <div className="imageInput">
-                <label htmlFor="imageUpload">Select an image to upload:</label>
-                <input type="file" id="imageUpload" name="image" accept="image/*" 
+          <div className="imageInput">
+            <label htmlFor="imageUpload">Select an image to upload:</label>
+            <input
+              type="file"
+              id="imageUpload"
+              name="image"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+             <input
+                type="text"
+                id="image"
                 value={image}
-                onChange={(e) => setImage(e.target.result)}/>
-                <button type="submit" className="upload-button">Upload</button>
-                                </div>
-          <p style={{ color: "red" , textAlign: "center"}}>{validation}</p>
+                placeholder="Image URL will appear here"
+                readOnly
+            />
+           
+          { /* <button type="submit" className="upload-button">Upload</button> */}
+          </div>
+                       
+
+          <p style={{ color: "red", textAlign: "center" }}>{validation}</p>
           <div style={{ textAlign: "center" }}>
-            <button
-              
-              onClick={handleNextPhase}
-              className="next-phase"
-            >
+            <button onClick={handleNextPhase} className="next-phase">
               Next
             </button>
           </div>
         </form>
       )}
 
-      {/* Phase 2: Confirmation or Additional Fields */}
+      {/* Phase 2: Confirmation */}
       {currentPhase === 2 && (
         <div className="Event-form">
           <h3>Event Confirmation</h3>
@@ -189,15 +203,13 @@ export default function CreateEvents() {
             <li>
               <strong>Starts:</strong> {eventDetails.date} at {eventDetails.time}
             </li>
+            <li>
+              <strong>Ends:</strong> {eventDetails.endDate} at {eventDetails.endTime}
+            </li>
           </ul>
-          <p
-            style={{ color: "black", font: "bold 1.5rem Arial", cursor: "pointer" }}
-            onClick={() => alert("Event submitted!")}
-          >
-            Finish
-          </p>
+          <button onClick={() => alert("Event submitted!")}>Finish</button>
         </div>
       )}
     </div>
   );
-}
+} 

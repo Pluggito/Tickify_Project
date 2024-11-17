@@ -33,6 +33,7 @@ export default function TicketLogin() {
     } finally {
       setLoading(false); // Hide loader
     }
+  }
 
 
   const text = `Don't have an account? `;
@@ -105,3 +106,4 @@ export default function TicketLogin() {
     </div>
   );
 }
+

@@ -45,6 +45,8 @@ export default function TicketLogin() {
 //THIS IS THE FUNCTION TO LOGIN 
 const login = async (e) =>{
     e.preventDefault();
+    
+    //LOADING SCREEN
    // setLoading(true); // Show loader during login attempt
     // setError(null); // Clear previous errors
 
@@ -58,6 +60,7 @@ const login = async (e) =>{
     } catch (error) {
         console.error(error.message)
     }
+
     //Reconfigure it
 
    {/* 

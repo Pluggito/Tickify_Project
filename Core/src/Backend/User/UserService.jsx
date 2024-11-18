@@ -1,4 +1,4 @@
-import { doc, setDoc, collection, getDocs, getDoc } from "@firebase/firestore";
+import { doc, setDoc, collection, getDocs, getDoc,updateDoc } from "@firebase/firestore";
 import { db } from "../Auth/firebase";
 
 export const getAllUsers = async () => {
@@ -28,5 +28,15 @@ export const getAllUsers = async () => {
         console.error(error)
     }
   };
+
+
+  export const updateUserProfile = async (userId,editedData) =>{
+    try {
+      const userDocRef = doc(db,"Users",userId);
+      const userDocSnap = await updateDoc(userDocRef,editedData)
+    } catch (error) {
+      
+    }
+  }
   
 

@@ -1,6 +1,10 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { getAllUsers, getUserProfile } from "../User/UserService";
+import {
+  getAllUsers,
+  getUserProfile,
+  updateUserProfile,
+} from "../User/UserService";
 const TestPage = () => {
   const [logInEmail, setLoginEmail] = useState("");
   const [logInPassword, setLoginPassword] = useState("");
@@ -9,80 +13,107 @@ const TestPage = () => {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInFirstname, setSignInFirstname] = useState("");
   const [signInLastname, setSignInLastname] = useState("");
-  const [users,setUsers] = useState([])
-  const [profile, setProfile] = useState({})
-  const [error, setError] = useState('');
+  const [users, setUsers] = useState([]);
+  const [profile, setProfile] = useState({});
+  const [editProfile, setEditProfile] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  const [error, setError] = useState("");
 
-  const { currentUser ,currentUserUid } = useAuth();
+  const { currentUser, currentUserUid } = useAuth();
 
   useEffect(() => {
-    getUsersList(),
-    fetchUserInfo()
-  }, [])
-  
+    getUsersList(), fetchUserInfo();
+  }, []);
+
+  useEffect(() => {
+    if (profile) {
+      setEditProfile({
+        firstName: profile.firstName || "",
+        lastName: profile.lastName || "",
+        email: profile.email || "",
+      });
+    }
+  }, [profile]);
 
   //THIS IS THE FUNCTION TO LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await logIn(logInEmail, logInPassword);
-
-      //YOU CAN ADD LOADING ANIMATION HERE.....
-
-      //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-      // navigate('/Tickify_Project/')
-
       alert(logInEmail + " is Logged in");
     } catch (error) {
       console.error(error.message);
     }
-
-    //SIGN-UP METHOND
   };
+  //SIGN-UP METHOND
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUp(signInEmail, signInPassword,signInFirstname,signInLastname);
-      //   navigate('/Tickify_Project/')
-      getUsersList()
-      // alert("Account was created for " + signInEmail);
+      await signUp(
+        signInEmail,
+        signInPassword,
+        signInFirstname,
+        signInLastname
+      );
+      getUsersList();
+      alert("Account was created for " + signInEmail);
     } catch (err) {
       setError(err.message);
-      console.error(error)
+      console.error(error);
     }
   };
 
   const getUsersList = async () => {
-
     try {
-       const userList = await getAllUsers()
+      const userList = await getAllUsers();
 
-     setUsers(userList)
+      setUsers(userList);
 
-     console.log("Users",userList)
+      console.log("Users", userList);
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-    
-  }
+  };
 
-const fetchUserInfo = async() =>{
+  const fetchUserInfo = async () => {
+    try {
+      const userInfo = await getUserProfile(currentUserUid);
+      console.log(userInfo);
+      setProfile(userInfo);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
-  try {
-      const userInfo = await getUserProfile(currentUserUid)
-  console.log(userInfo)
-  setProfile(userInfo)
-  } catch (error) {
-    console.error(error.message)
-  }
+  const handleEditProfile = async () => {
+    try {
+      await updateUserProfile(currentUserUid, editProfile);
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        ...editProfile, // Update local state
+      }));
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile. Please try again.");
+    }
+  };
 
-}
+  const handleEditChange = async (e) => {
+    const { name, value } = e.target;
+    setEditProfile((prevProfile) => ({
+      ...prevProfile, // Copy all existing fields from the previous state
+      [name]: value, // Dynamically update the field specified by 'name' with the new value
+    }));
+  };
   return (
     <div>
       {/* LOGIN */}
 
       <div>
-        <p>Login</p>
+        <h1>Login</h1>
         <form>
           <input
             onChange={(e) => setLoginEmail(e.target.value)}
@@ -103,7 +134,7 @@ const fetchUserInfo = async() =>{
       <br />
 
       {/* SIGN UP */}
-
+      <h1>SIGN UP</h1>
       <form>
         <p>Sign in</p>
         <input
@@ -131,24 +162,57 @@ const fetchUserInfo = async() =>{
         </button>
       </form>
 
-
       {/* Users */}
+      <h1>Users</h1>
+      <ol style={{ paddingLeft: 20 }}>
         {users?.map((user) => (
-          <div key={user.id}>
-              <button>{user?.email}</button>
-              {/* <button>{user.firstName}</button>
-              <button>{user.lastName}</button> */}
-          </div>
+          <li key={user.id}>{user?.email}</li>
         ))}
+      </ol>
 
-        {/* Profile */}
+      {/* Profile */}
+      <h1>My Profile</h1>
+      <div>
+        <p>{profile?.email}</p>
+        <p>{profile?.firstName}</p>
+        <p>{profile?.lastName}</p>
+      </div>
+      <div>
+        <h1>Edit Profile</h1>
         <div>
-              <button>{profile?.email}</button>
-              <button>{profile?.firstName}</button>
-              <button>{profile?.lastName}</button>
+          <form action="">
+            <input
+              placeholder="FirstName"
+              // value={editProfile?.firstName}
+              value={editProfile.firstName}
+              type="text"
+              name="firstName"
+              onChange={(e) => handleEditChange(e)}
+            />
+            <br />
+            <input
+              placeholder="LastName"
+              type="text"
+              value={editProfile.lastName}
+              name="lastName"
+              onChange={handleEditChange}
+            />
+            <br />
+            <input
+              placeholder="Email"
+              type="text"
+              value={editProfile.email}
+              name="email"
+              onChange={handleEditChange}
+            />
+            <br />
+            <button type="button" onClick={handleEditProfile}>
+              Edit
+            </button>
+          </form>
         </div>
-
-
+        <h1>Forget Password</h1>
+      </div>
     </div>
   );
 };

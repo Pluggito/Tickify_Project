@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { getAllUsers, getUserProfile } from "../User/UserService";
+import {
+  getAllUsers,
+  getUserProfile,
+  updateUserProfile,
+} from "../User/UserService";
 const TestPage = () => {
   const [logInEmail, setLoginEmail] = useState("");
   const [logInPassword, setLoginPassword] = useState("");
@@ -11,34 +15,40 @@ const TestPage = () => {
   const [signInLastname, setSignInLastname] = useState("");
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
+  const [editProfile, setEditProfile] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
   const [error, setError] = useState("");
 
-
-  const pEmail = profile.email
   const { currentUser, currentUserUid } = useAuth();
 
   useEffect(() => {
     getUsersList(), fetchUserInfo();
   }, []);
 
+  useEffect(() => {
+    if (profile) {
+      setEditProfile({
+        firstName: profile.firstName || "",
+        lastName: profile.lastName || "",
+        email: profile.email || "",
+      });
+    }
+  }, [profile]);
+
   //THIS IS THE FUNCTION TO LOGIN
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await logIn(logInEmail, logInPassword);
-
-      //YOU CAN ADD LOADING ANIMATION HERE.....
-
-      //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-      // navigate('/Tickify_Project/')
-
       alert(logInEmail + " is Logged in");
     } catch (error) {
       console.error(error.message);
     }
-
-    //SIGN-UP METHOND
   };
+  //SIGN-UP METHOND
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
@@ -48,9 +58,8 @@ const TestPage = () => {
         signInFirstname,
         signInLastname
       );
-      //   navigate('/Tickify_Project/')
       getUsersList();
-      // alert("Account was created for " + signInEmail);
+      alert("Account was created for " + signInEmail);
     } catch (err) {
       setError(err.message);
       console.error(error);
@@ -77,6 +86,27 @@ const TestPage = () => {
     } catch (error) {
       console.error(error.message);
     }
+  };
+
+  const handleEditProfile = async () => {
+    try {
+      await updateUserProfile(currentUserUid, editProfile);
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        ...editProfile, // Update local state
+      }));
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile. Please try again.");
+    }
+  };
+
+  const handleEditChange = async (e) => {
+    const { name, value } = e.target;
+    setEditProfile((prevProfile) => ({
+      ...prevProfile, // Copy all existing fields from the previous state
+      [name]: value, // Dynamically update the field specified by 'name' with the new value
+    }));
   };
   return (
     <div>
@@ -134,12 +164,9 @@ const TestPage = () => {
 
       {/* Users */}
       <h1>Users</h1>
-      <ol style={{paddingLeft:20}}>
+      <ol style={{ paddingLeft: 20 }}>
         {users?.map((user) => (
-
-
-            <li>{user?.email}</li>
-        
+          <li key={user.id}>{user?.email}</li>
         ))}
       </ol>
 
@@ -151,15 +178,40 @@ const TestPage = () => {
         <p>{profile?.lastName}</p>
       </div>
       <div>
-      <h1>Edit Profile</h1>
-      <div>
-        <form action="">
-        <input placeholder="FirstName" value={'Email'} type="text" name="" id="" /><br/>
-        <input placeholder="LastName" type="text" value={profile?.lastName} name="" id="" /><br/>
-        <input placeholder="Email" type="text" value={profile?.email} name="" id="" /><br/>
-        <button type="submit">Edit</button>
-        </form>
-      </div>
+        <h1>Edit Profile</h1>
+        <div>
+          <form action="">
+            <input
+              placeholder="FirstName"
+              // value={editProfile?.firstName}
+              value={editProfile.firstName}
+              type="text"
+              name="firstName"
+              onChange={(e) => handleEditChange(e)}
+            />
+            <br />
+            <input
+              placeholder="LastName"
+              type="text"
+              value={editProfile.lastName}
+              name="lastName"
+              onChange={handleEditChange}
+            />
+            <br />
+            <input
+              placeholder="Email"
+              type="text"
+              value={editProfile.email}
+              name="email"
+              onChange={handleEditChange}
+            />
+            <br />
+            <button type="button" onClick={handleEditProfile}>
+              Edit
+            </button>
+          </form>
+        </div>
+        <h1>Forget Password</h1>
       </div>
     </div>
   );

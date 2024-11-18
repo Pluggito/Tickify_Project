@@ -44,12 +44,12 @@
   transform: scale(1.1);
 }
 
-.featureColumn h3{
+.featureName{
     margin-bottom: 15px;
     width: 150px;
 }
 
-.featureColumn p{
+.featureDescription{
     width: 250px;
     letter-spacing: 1px;
     color: #7a7a7a;

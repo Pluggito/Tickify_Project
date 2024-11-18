@@ -5,7 +5,7 @@ import '../Css/Reset.css'
 export default function ForgetPassword(){
     return(
     
-            <div className="container">
+            <div className="ResetContainer">
     <div className="form-wrapper">
       <h1 className="form-name">Reset Password</h1>
       <p className="description">Enter your email address, and we `&aspo` ll send you a link to reset your password.</p>

@@ -59,6 +59,7 @@ export default function Navbar() {
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <ul>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                       <Link to="/profile" onClick={() => setDropdownOpen(false)}>Profile</Link>
                     </li>

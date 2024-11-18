@@ -1,5 +1,5 @@
 import './Navbar.css';
-import logo from '../../assets/Logo 1.png';
+import logo from '../../assets/Logo 1 compressed.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../Backend/context/AuthContext';
 import { signOut } from '../../../Backend/Auth/auth';
@@ -59,6 +59,7 @@ export default function Navbar() {
               {dropdownOpen && (
                 <div className="dropdown-menu">
                   <ul>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                       <Link to="/profile" onClick={() => setDropdownOpen(false)}>Profile</Link>
                     </li>

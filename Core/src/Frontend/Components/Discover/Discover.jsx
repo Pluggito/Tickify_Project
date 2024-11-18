@@ -3,14 +3,9 @@ import photo1 from '../../assets/pexels-foteros-352505.jpg';
 // import ReactDOM from 'react-dom/client'; // Updated import for React 18
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../Pages/CreateEvent/CreateEvents';
-
-
-
-
-
-
+import { useAuth } from '../../../Backend/context/AuthContext';
 export default function Discover(){
 
   {/* const dayinfo = props.day;
@@ -18,6 +13,20 @@ export default function Discover(){
     const name = props.eventdetails; */}  
         
 //trying to get the event details from the create events page
+    
+    // USERLOGGEDIN STORES A BOOL TO KNOW IF A USER IS LOGGED IN OR NOT
+    const { userLoggedIn } = useAuth()
+    const navigate = useNavigate()
+
+    // FUNCTION TO CHECK IF A USER IS LOGGED IN BEFORE ALLOWING THEM TO CREATE AN EVENT
+    const createEvent = () =>{
+        if (userLoggedIn) {
+            navigate("/create-events")
+        }else{
+            navigate("/login-sign-up" )
+        }
+
+    }
 
     return(
         <>
@@ -97,7 +106,8 @@ export default function Discover(){
         <div className='eventCreation-container'>
         <h2>Make your own Event</h2>
         <p>Effortlessly design and organize your event, from small gatherings to large festivals, with our simple, seamless tools.</p>
-        <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button>
+        {/* <button className='eventButton'><Link to="/create-events" style={{ textDecoration: 'none' }} className='eventButton-text'>Create Events</Link></button> */}
+        <button onClick={createEvent} className='eventButton , eventButton-text' style={{ textDecoration: 'none' }}>Create Events</button>
         </div>
 
         </div>

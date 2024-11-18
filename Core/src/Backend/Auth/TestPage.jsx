@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { getAllUsers, getUserProfile } from "../User/UserService";
 const TestPage = () => {
@@ -9,17 +9,17 @@ const TestPage = () => {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInFirstname, setSignInFirstname] = useState("");
   const [signInLastname, setSignInLastname] = useState("");
-  const [users,setUsers] = useState([])
-  const [profile, setProfile] = useState({})
-  const [error, setError] = useState('');
+  const [users, setUsers] = useState([]);
+  const [profile, setProfile] = useState({});
+  const [error, setError] = useState("");
 
-  const { currentUser ,currentUserUid } = useAuth();
+
+  const pEmail = profile.email
+  const { currentUser, currentUserUid } = useAuth();
 
   useEffect(() => {
-    getUsersList(),
-    fetchUserInfo()
-  }, [])
-  
+    getUsersList(), fetchUserInfo();
+  }, []);
 
   //THIS IS THE FUNCTION TO LOGIN
   const handleLogin = async (e) => {
@@ -42,47 +42,48 @@ const TestPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUp(signInEmail, signInPassword,signInFirstname,signInLastname);
+      await signUp(
+        signInEmail,
+        signInPassword,
+        signInFirstname,
+        signInLastname
+      );
       //   navigate('/Tickify_Project/')
-      getUsersList()
+      getUsersList();
       // alert("Account was created for " + signInEmail);
     } catch (err) {
       setError(err.message);
-      console.error(error)
+      console.error(error);
     }
   };
 
   const getUsersList = async () => {
-
     try {
-       const userList = await getAllUsers()
+      const userList = await getAllUsers();
 
-     setUsers(userList)
+      setUsers(userList);
 
-     console.log("Users",userList)
+      console.log("Users", userList);
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-    
-  }
+  };
 
-const fetchUserInfo = async() =>{
-
-  try {
-      const userInfo = await getUserProfile(currentUserUid)
-  console.log(userInfo)
-  setProfile(userInfo)
-  } catch (error) {
-    console.error(error.message)
-  }
-
-}
+  const fetchUserInfo = async () => {
+    try {
+      const userInfo = await getUserProfile(currentUserUid);
+      console.log(userInfo);
+      setProfile(userInfo);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   return (
     <div>
       {/* LOGIN */}
 
       <div>
-        <p>Login</p>
+        <h1>Login</h1>
         <form>
           <input
             onChange={(e) => setLoginEmail(e.target.value)}
@@ -103,7 +104,7 @@ const fetchUserInfo = async() =>{
       <br />
 
       {/* SIGN UP */}
-
+      <h1>SIGN UP</h1>
       <form>
         <p>Sign in</p>
         <input
@@ -131,24 +132,35 @@ const fetchUserInfo = async() =>{
         </button>
       </form>
 
-
       {/* Users */}
+      <h1>Users</h1>
+      <ol style={{paddingLeft:20}}>
         {users?.map((user) => (
-          <div key={user.id}>
-              <button>{user?.email}</button>
-              {/* <button>{user.firstName}</button>
-              <button>{user.lastName}</button> */}
-          </div>
+
+
+            <li>{user?.email}</li>
+        
         ))}
+      </ol>
 
-        {/* Profile */}
-        <div>
-              <button>{profile?.email}</button>
-              <button>{profile?.firstName}</button>
-              <button>{profile?.lastName}</button>
-        </div>
-
-
+      {/* Profile */}
+      <h1>My Profile</h1>
+      <div>
+        <p>{profile?.email}</p>
+        <p>{profile?.firstName}</p>
+        <p>{profile?.lastName}</p>
+      </div>
+      <div>
+      <h1>Edit Profile</h1>
+      <div>
+        <form action="">
+        <input placeholder="FirstName" value={'Email'} type="text" name="" id="" /><br/>
+        <input placeholder="LastName" type="text" value={profile?.lastName} name="" id="" /><br/>
+        <input placeholder="Email" type="text" value={profile?.email} name="" id="" /><br/>
+        <button type="submit">Edit</button>
+        </form>
+      </div>
+      </div>
     </div>
   );
 };

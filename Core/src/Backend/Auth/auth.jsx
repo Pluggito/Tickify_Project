@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 export const signUp = async (email, password, fName, lName) => {
@@ -48,4 +49,14 @@ export const signInWithGoogle = async () => {
 export const signOut = () => {
   return auth.signOut();
 };
+
+export const forgetPassword = async (email) =>{
+  try {
+    
+    await sendPasswordResetEmail(auth,email)
+    alert("An Email has been sent to" + email)
+  } catch (error) {
+    console.error(error)
+  }
+}
 

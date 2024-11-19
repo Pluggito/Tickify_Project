@@ -5,6 +5,7 @@ import {
   getUserProfile,
   updateUserProfile,
 } from "../User/UserService";
+import { forgetPassword, logIn } from "./auth";
 const TestPage = () => {
   const [logInEmail, setLoginEmail] = useState("");
   const [logInPassword, setLoginPassword] = useState("");
@@ -20,6 +21,7 @@ const TestPage = () => {
     lastName: "",
     email: "",
   });
+  const [resetEmail, setResetEmail] = useState("");
   const [error, setError] = useState("");
 
   const { currentUser, currentUserUid } = useAuth();
@@ -108,6 +110,11 @@ const TestPage = () => {
       [name]: value, // Dynamically update the field specified by 'name' with the new value
     }));
   };
+
+  const sendResetEmail = () =>{
+    forgetPassword(resetEmail)
+    
+  }
   return (
     <div>
       {/* LOGIN */}
@@ -212,6 +219,17 @@ const TestPage = () => {
           </form>
         </div>
         <h1>Forget Password</h1>
+        <div>
+          <form>
+            <input
+              placeholder="Email"
+              type="email"
+              name="Email"
+              onChange={(e) => setResetEmail(e.target.value)}
+            />
+            <button onClick={sendResetEmail} type="button">Send</button>
+          </form>
+        </div>
       </div>
     </div>
   );

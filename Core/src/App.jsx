@@ -15,6 +15,8 @@ import ForgetPassword from './Frontend/Pages/Admin/ForgetPassword';
 import CreateEvents from './Frontend/Pages/CreateEvent/CreateEvents';
 import { AuthProvider } from './Backend/context/AuthContext';
 import TestPage from './Backend/Auth/TestPage';
+import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
+import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
 
 const App = () => {
   return (
@@ -47,6 +49,8 @@ const App = () => {
           {/* Create Events */}
           <Route path="/create-events" element={<CreateEvents />} />
           <Route path="/test" element={<TestPage />} />
+          <Route path="/live-event" element={<LiveEvent />} />
+          <Route path="/online-event" element={<OnlineEvent />} />
         </Routes>
       </Router>
     </AuthProvider> 

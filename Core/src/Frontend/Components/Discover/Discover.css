@@ -84,8 +84,11 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom: 5px solid grey;
-    
+    transition: ease all 0.5s;
+}
 
+.photo:hover{
+    transform: scale(1.05);
 }
 
 .event-name{

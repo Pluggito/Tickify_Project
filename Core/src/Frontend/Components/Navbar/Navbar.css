@@ -100,13 +100,47 @@ nav img{
     align-items: center;
 }
 
-.user-icon{
+.user-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    color: #000;
-    align-self: center;
-    transition: all 0.5s;
-}
-
-.user-icon:hover{
-    color: var(--primary-color);
-}
+  }
+  
+  .user-icon {
+    color: #333;
+    margin-right: 8px;
+  }
+  
+  .user-icon:hover {
+    color: #b30d0d;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f5f5f5;
+    color: #b30d0d;
+  }

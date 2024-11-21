@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  confirmPasswordReset,
 } from "firebase/auth";
 
 export const signUp = async (email, password, fName, lName) => {
@@ -53,10 +54,18 @@ export const signOut = () => {
 export const forgetPassword = async (email) =>{
   try {
     
-    await sendPasswordResetEmail(auth,email)
-    alert("An Email has been sent to" + email)
+    await sendPasswordResetEmail(auth,email,{url:'http://localhost:5173/Tickify_Project/#/login-sign-up'})
+    alert("An Email has been sent to " + email)
   } catch (error) {
     console.error(error)
+  }
+};
+
+export const resetPassword = async (oobCode,newPassword) => {
+  try {
+    await confirmPasswordReset(auth,oobCode,newPassword)
+  } catch (error) {
+    console.log(error)
   }
 }
 

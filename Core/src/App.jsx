@@ -17,6 +17,7 @@ import { AuthProvider } from './Backend/context/AuthContext';
 import TestPage from './Backend/Auth/TestPage';
 import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
 import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
+import ResetPassword from './Frontend/Pages/Admin/ResetPassword';
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/login-sign-up" element={<LoginSignUp />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
+          <Route path='/reset-password' element={<ResetPassword/>}/>
 
           {/* Create Events */}
           <Route path="/create-events" element={<CreateEvents />} />

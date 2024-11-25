@@ -62,7 +62,7 @@ export default function SignUp() {
         formData.lastName
       );
       setLoading(false);
-      navigate("/");
+      navigate("/waiting");
     } catch (err) {
       setError(err.message);
     } finally {

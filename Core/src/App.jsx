@@ -17,6 +17,8 @@ import { AuthProvider } from './Backend/context/AuthContext';
 import TestPage from './Backend/Auth/TestPage';
 import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
 import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
+import EmailLinkPage from './Frontend/Pages/Admin/EmailLinkPage';
+import WaitingPage from './Frontend/Pages/Admin/WaitingPage';
 
 const App = () => {
   return (
@@ -45,6 +47,8 @@ const App = () => {
           <Route path="/login-sign-up" element={<LoginSignUp />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
+          <Route path='/email-link' element={<EmailLinkPage/>}/>
+          <Route path='/waiting' element={<WaitingPage/>}/>
 
           {/* Create Events */}
           <Route path="/create-events" element={<CreateEvents />} />

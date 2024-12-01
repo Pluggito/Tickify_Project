@@ -1,11 +1,14 @@
 import { auth, db } from "./firebase";
-import { doc, setDoc } from "@firebase/firestore";
+import { doc, setDoc, updateDoc } from "@firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  confirmPasswordReset,
+  sendEmailVerification,
+  applyActionCode,
 } from "firebase/auth";
 
 export const signUp = async (email, password, fName, lName) => {
@@ -23,10 +26,12 @@ export const signUp = async (email, password, fName, lName) => {
       firstName: fName,
       lastName: lName,
       email: email,
+      emailVerified: false,
       createdAt: new Date(),
     };
 
     await setDoc(userRef, userData);
+    await sendConfirmEmail();
   } catch (error) {
     console.error("Error signing up and adding user data: ", error.message);
   }
@@ -50,13 +55,50 @@ export const signOut = () => {
   return auth.signOut();
 };
 
-export const forgetPassword = async (email) =>{
+export const forgetPassword = async (email) => {
   try {
-    
-    await sendPasswordResetEmail(auth,email)
-    alert("An Email has been sent to" + email)
+    await sendPasswordResetEmail(auth, email, {
+      url: "http://localhost:5173/Tickify_Project/#/login-sign-up",
+    });
+    alert("An Email has been sent to " + email);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
+export const resetPassword = async (oobCode, newPassword) => {
+  try {
+    await confirmPasswordReset(auth, oobCode, newPassword);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const sendConfirmEmail = async () => {
+  try {
+    await sendEmailVerification(auth.currentUser);
+    //YOU CAN CHANGE THE ALERT TO SOMETHING FINER
+    alert("Email Verification Link Sent Has Been Sent To You");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const verifyEmail = async (oobCode, navigate) => {
+  try {
+    //FUNCTION TO VERIFY THE OOBCODE
+    await applyActionCode(auth, oobCode);
+    await auth.currentUser.reload();
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      const userDocRef = doc(db, "Users", currentUser.uid);
+      await updateDoc(userDocRef, { emailVerified: true });
+      alert("Email successfully verified");
+    } else {
+      alert("User is not logged in. Email verification was successful.");
+      navigate("/login-sign-up"); // Redirect user to log in
+    }
+  } catch (error) {
+    console.error("Email verification failed:", error);
+  }
+};

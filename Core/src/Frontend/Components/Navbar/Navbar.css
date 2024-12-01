@@ -71,8 +71,8 @@ nav ul li:hover::after{
     color: var(--primary-color);
 
 }
-.get-started{
-    background-color: var(--secondary-color);
+.login-button{
+   background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), #b30d0d);
     color: hsl(0, 0%, 100%);
     width: 105px;
     padding: 0.7rem 0.5rem;
@@ -81,10 +81,11 @@ nav ul li:hover::after{
     margin-top: -10px;
     cursor: pointer;
     transition: ease-in-out 0.5s;
+    border: none;
 }
 
-.get-started:hover{
-    transform: translateY(-3px); /* Reduced the distance of the button when hovered */
+.login-button:hover{
+    transform: scale(1.1)
 }
 
 nav img{

@@ -15,7 +15,7 @@
     --secondary-color: #000;
     --font-family: 'Space Grotesk';
     --text-color: #fff;
-    --transition: all 0.5s;
+    --transition: all 0.5s ease-in-out;
 }
 
 body{

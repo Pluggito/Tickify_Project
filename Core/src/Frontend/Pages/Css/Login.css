@@ -15,13 +15,14 @@
   .login-wrapper .login-container {
     display: flex;
     width: 700px;
-    height: 550px;
+    height: 600px;
     background: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     animation: slideIn 1.5s ease-out;
     animation-delay: 0.1s;
+    margin-top: -20px;
   }
   
   /* Left section styling */
@@ -176,10 +177,7 @@
     transition: border-color 0.3s ease;
   }
   
-  .login-wrapper .input-group input:focus {
-    border-color: #b30d0d;
-  }
-  
+
   /* Label styling */
   .login-wrapper .input-group label {
     position: absolute;
@@ -214,4 +212,21 @@
     z-index: 1000; /* Ensure it is above all other elements */
   }
 
- 
+ .google-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 50px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  background: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #DB4437;
+    gap: 10px;
+ }
+

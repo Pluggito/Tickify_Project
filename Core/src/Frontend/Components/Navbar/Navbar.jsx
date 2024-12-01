@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* IF NO ONE IS LOGGED IN, IT WLL SHOW GET STARTED BUTTON */}
          {userLoggedIn ?  <p onClick={signOut} style={{cursor: 'pointer', color: '#b30d0d'}} >Logout</p>
 
-         : <button className='get-started'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Get Started</Link></button>}
+         : <button className='login-button'><Link to="/Tickify_Project/login-sign-up" style={{ textDecoration: 'none', color: "white" }}>Login</Link></button>}
         </div>
       </ul>
     </nav>

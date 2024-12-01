@@ -30,7 +30,7 @@ export default function Discover(){
 
     return(
         <>
-        <div className="container"> 
+        <div className="discoverContainer"> 
         <div className='dicoverBlock'>
         <h1 className='discover'>Discover</h1>
         <FontAwesomeIcon icon={faArrowRight} className='iconArrow' size='1x'/>

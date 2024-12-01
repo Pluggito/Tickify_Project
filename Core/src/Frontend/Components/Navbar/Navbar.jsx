@@ -69,9 +69,9 @@ export default function Navbar() {
               )}
             </div>
           ) : (
-            <button className="get-started">
+            <button className="login-button">
               <Link to="/login-sign-up" style={{ textDecoration: 'none', color: 'white' }}>
-                Get Started
+                Login
               </Link>
             </button>
           )}

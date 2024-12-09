@@ -72,7 +72,7 @@ nav ul li:hover::after{
 
 }
 .login-button{
-   background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), #b30d0d);
+   background: var(--secondary-color);
     color: hsl(0, 0%, 100%);
     width: 105px;
     padding: 0.7rem 0.5rem;

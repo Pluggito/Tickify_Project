@@ -19,6 +19,7 @@ import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
 import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
 import EmailLinkPage from './Frontend/Pages/Admin/EmailLinkPage';
 import WaitingPage from './Frontend/Pages/Admin/WaitingPage';
+import Preference from './Frontend/Components/About/Preference';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             element={
               <>
                 <Hero />
+                <Preference/>
                 <Discover />
                 <Features />
                 <Footer />

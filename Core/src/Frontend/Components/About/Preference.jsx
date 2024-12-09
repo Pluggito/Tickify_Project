@@ -14,7 +14,7 @@ export default function Preference() {
         useTransform(
             scrollYProgress,
             [i * 0.2, i * 0.2 + 0.3],
-            ["100%", "-100%"]
+            ["101%", "-101%"]
         )
     );
 
@@ -30,6 +30,7 @@ export default function Preference() {
                         style={{
                             backgroundPosition: lineProgresses[index]
                         }}
+                        transition={{delay: 0.5}}
                         className="gradient-text"
                     >
                         {line}{index !== lines.length - 1 ? '.' : ''}

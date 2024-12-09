@@ -10,6 +10,7 @@ import {
   sendEmailVerification,
   applyActionCode,
 } from "firebase/auth";
+import { getUserProfile } from "../User/UserService";
 
 export const signUp = async (email, password, fName, lName) => {
   try {
@@ -45,7 +46,30 @@ export const logIn = async (email, password) => {
 // THIS IS THE METHOD TO SIGN UP WITH GOOGLE
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
+
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Extract user details
+    const displayName = user.displayName || ""; // Ensure it's not null
+    const email = user.email;
+    const uid = user.uid; // Firebase UID
+    const photoURL = user.photoURL;
+
+    const [firstName = "", lastName = ""] = displayName.split(" ");
+
+    const userRef = doc(db, "Users", uid); // Document with UID as ID
+    await setDoc(userRef, {
+      firstName,
+      lastName,
+      email,
+      emailVerified: true,
+      createdAt: new Date(),
+    });
+  } catch (error) {
+    console.error("Error signing in with Google:", error.message);
+  }
 
   return result;
 };
@@ -77,9 +101,11 @@ export const resetPassword = async (oobCode, newPassword) => {
 export const sendConfirmEmail = async () => {
   try {
     await sendEmailVerification(auth.currentUser);
+
     //YOU CAN CHANGE THE ALERT TO SOMETHING FINER
     alert("Email Verification Link Sent Has Been Sent To You");
   } catch (error) {
+    alert(error)
     console.error(error);
   }
 };
@@ -102,3 +128,12 @@ export const verifyEmail = async (oobCode, navigate) => {
     console.error("Email verification failed:", error);
   }
 };
+
+
+export const getVerifiedEmail = async () => {
+  const userl = await getUserProfile(auth.currentUser.uid)
+  const emailVerified = userl.emailVerified
+
+  return emailVerified
+     
+}

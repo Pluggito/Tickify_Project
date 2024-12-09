@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../Css/Reset.css";
 import { resetPassword, verifyEmail } from "../../../Backend/Auth/auth";
 import ReactLoading from "react-loading";
+import { useAuth } from "../../../Backend/context/AuthContext";
 
 const EmailLinkPage = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -11,6 +12,7 @@ const EmailLinkPage = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { setCurrentUser } = useAuth()
 
   // Extract query parameters from the URL
   const query = new URLSearchParams(location.search);

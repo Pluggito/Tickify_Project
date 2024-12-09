@@ -41,6 +41,8 @@ export function AuthProvider({ children }) {
         currentUserUid,
         userLoggedIn,
         loading,
+
+        setCurrentUser,
     }
 
     return (

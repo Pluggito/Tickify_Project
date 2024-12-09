@@ -3,13 +3,11 @@ import { useNavigate } from "react-router";
 import "../Css/Login.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Backend/context/AuthContext";
-import { logIn } from "../../../Backend/Auth/auth";
+import { getVerifiedEmail, logIn } from "../../../Backend/Auth/auth";
 //import PreLoader from '../../../PreLoader';
 // import { motion } from "framer-motion";
 import { useEffect } from "react";
 import ReactLoading from "react-loading";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 // THIS IS THE LOGIN PAGE FOR THE TICKET BUYER
 
@@ -22,7 +20,7 @@ export default function TicketLogin() {
   // USERLOGGEDIN VARIABLE CONTAINS THE BOOLEAN FOR WEATHER A USER IS LOGGED IN
   const { currentUser, userLoggedIn } = useAuth();
   const navigate = useNavigate();
-
+  
   //THIS IS THE FUNCTION TO LOGIN
   const login = async (e) => {
     e.preventDefault();
@@ -30,14 +28,20 @@ export default function TicketLogin() {
     try {
       await logIn(email, password);
       //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-      navigate("/");
+      const eVerified = await getVerifiedEmail()
+      if (eVerified) {
+        navigate("/");
+      } else {
+        setLoading(false);
+        alert("Email Has Not Been Verified");
+      }
     } catch (error) {
-      console.error(error.message);
+      alert(error.code);
+      // console.error(error.code);
     } finally {
       setLoading(false); // Hide loader
     }
-  }
-
+  };
 
   const text = `Don't have an account? `;
 
@@ -120,4 +124,3 @@ export default function TicketLogin() {
     </div>
   );
 }
-

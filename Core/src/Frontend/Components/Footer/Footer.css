@@ -17,7 +17,7 @@
 .footer-column {
     flex: 1;
     min-width: 200px;
-    margin: 0 20px;
+    margin: 0 10px;
 }
 
 .footer h4 {
@@ -67,7 +67,7 @@
    border-radius: 40px;
    width: 400px;
    height: 40px;
-  margin-left: -20px;
+  margin-left: -80px;
   margin-top: 20px;
   background-color: #fff;
 

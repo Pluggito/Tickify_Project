@@ -1,71 +1,31 @@
-.Hero{
-    background: linear-gradient(215deg, rgba(0,0,0,0.4),rgba(0,0,0,0.5),rgba(179, 13, 13,0.9)),url('../../assets/background 2.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#Hero{
+    background-color: rgb(240, 238, 235);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, rgba(0, 0, 0, 0) 1px);
+    background-size: 4px 4px;
     width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  
+    height: 100vh;  
+    position: relative;   
 }
 
-
-.Header{
+.heroContainer{
     justify-content: center;
     align-items: center;
-   /* border: 1px solid red; */
-    left: 25%; 
-    top: 17%;
+}
+
+.intro
+{
+    justify-content: center;
+    align-items: center;
+    top: 45%;
+    left: 20%;
+    transform: translate(50px 50px);
+    color: black;
     position: absolute;
-    transform: translate(24%, 50%);
-    width: auto;
-    /*background-color: #b3b3b3;*/
-   /* mix-blend-mode: multiply; */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     letter-spacing: 1px;
-
 }
-
-.Title{
-    font: 700 92px 'Poppins';
-    color: white;
+.intro h5{
+    font: bold 16px 'Space Grotesk';
 }
-
-.Description{
-    font: 300 24px 'Space Grotesk';
-    color: var(--text-color);
-    margin-top: -10px;
-}
-
-.buttonContainer{
-    margin-top: 25px;
-    
-}
-
-.get-started-button{
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6), #b30d0d);
-    width: 250px;
-    padding: 0.8rem 0.6rem;
-    border-radius: 30px;
-    font-family: var(--font-family);
-    font-size: 24px;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-    mix-blend-mode: screen;
-}
-
-.get-started-button:hover {
-    transform: scale(1.1);
-  }
-
-
-
-.ticket-image{
-    margin-top: 100px;
-    width: 500px;
-    height: auto;
+.intro h2{
+    font: bold 100px 'Poppins';
 }

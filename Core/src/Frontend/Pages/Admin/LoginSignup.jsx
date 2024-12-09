@@ -8,7 +8,8 @@ import { getVerifiedEmail, logIn } from "../../../Backend/Auth/auth";
 // import { motion } from "framer-motion";
 import { useEffect } from "react";
 import ReactLoading from "react-loading";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 // THIS IS THE LOGIN PAGE FOR THE TICKET BUYER
 
 export default function TicketLogin() {

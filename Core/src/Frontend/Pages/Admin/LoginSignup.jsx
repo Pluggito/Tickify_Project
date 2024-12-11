@@ -3,7 +3,11 @@ import { useNavigate } from "react-router";
 import "../Css/Login.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Backend/context/AuthContext";
-import { getVerifiedEmail, logIn } from "../../../Backend/Auth/auth";
+import {
+  getVerifiedEmail,
+  logIn,
+  signInWithGoogle,
+} from "../../../Backend/Auth/auth";
 //import PreLoader from '../../../PreLoader';
 // import { motion } from "framer-motion";
 import { useEffect } from "react";
@@ -21,7 +25,7 @@ export default function TicketLogin() {
   // USERLOGGEDIN VARIABLE CONTAINS THE BOOLEAN FOR WEATHER A USER IS LOGGED IN
   const { currentUser, userLoggedIn } = useAuth();
   const navigate = useNavigate();
-  
+
   //THIS IS THE FUNCTION TO LOGIN
   const login = async (e) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ export default function TicketLogin() {
     try {
       await logIn(email, password);
       //IF THE LOGIN IS SUCCESSFUL IT WILL NAVIGATE TO THE HOME PAGE
-      const eVerified = await getVerifiedEmail()
+      const eVerified = await getVerifiedEmail();
       if (eVerified) {
         navigate("/");
       } else {
@@ -44,7 +48,30 @@ export default function TicketLogin() {
     }
   };
 
+  // Google sign-in method
+  const handleSignInWithGoogle = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithGoogle();
+      if (result.user) {
+        navigate("/"); // Navigate to home page
+      }
+    } catch (err) {
+      console.error("Google Sign-In Error:", err.message);
+      alert(err.message); // Provide user feedback
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const text = `Don't have an account? `;
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/')
+    }
+  }, [])
+  
 
   if (loading) {
     // Show preloader while `loading` is true
@@ -99,10 +126,10 @@ export default function TicketLogin() {
           </div>
 
           <div>
-            <button className="google-button">
-          <FontAwesomeIcon icon={faGoogle} size="lg" />
-            <span>Sign up with Google</span>
-          </button>
+            <button type="button" onClick={handleSignInWithGoogle} className="google-button">
+              <FontAwesomeIcon icon={faGoogle} size="lg" />
+              <span>Sign up with Google</span>
+            </button>
           </div>
           <p>
             Forgot password?{" "}

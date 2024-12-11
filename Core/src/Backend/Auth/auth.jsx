@@ -67,11 +67,13 @@ export const signInWithGoogle = async () => {
       emailVerified: true,
       createdAt: new Date(),
     });
+
+    return result;
   } catch (error) {
     console.error("Error signing in with Google:", error.message);
+    throw error;
   }
 
-  return result;
 };
 
 // THIS IS THE METHOD TO LOGOUT

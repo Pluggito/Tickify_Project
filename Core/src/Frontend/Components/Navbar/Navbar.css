@@ -9,7 +9,7 @@ nav{
     align-content: center;
     justify-content: space-between;
     color: var(--secondary-color);
-    box-shadow: 0 4px 8px #f0f4f8;
+    /* box-shadow: 0 4px 8px #f0f4f8; */
     position: sticky;
     z-index: 100;
     backdrop-filter: blur(10px);
@@ -17,11 +17,11 @@ nav{
     padding: 1rem 1.5rem;
    /* width: 100%;*/
     top: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    /* background-color: rgba(255, 255, 255, 0.95); */
     border-bottom: 1px solid #e5e5e5;
-    /* max-width: 1540px; */
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 
@@ -145,3 +145,107 @@ nav img{
     background-color: #f5f5f5;
     color: #b30d0d;
   }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Dark theme (for light backgrounds) */
+.navbar.dark {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.navbar.dark a {
+    color: var(--primary-color);
+}
+
+/* Light theme (for dark backgrounds) */
+.navbar.light {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.light a {
+    color: white;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Dark theme (for light backgrounds) */
+nav.dark {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+nav.dark .links {
+    color: var(--secondary-color) !important;
+}
+
+nav.dark h1 {
+    color: var(--secondary-color) !important;
+}
+
+nav.dark .user-icon {
+    color: var(--primary-color) !important;
+}
+
+/* Light theme (for dark backgrounds) */
+nav.light {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav.light .links {
+    color: white !important;
+}
+
+nav.light h1 {
+    color: white !important;
+}
+
+nav.light .user-icon {
+    color: white !important;
+}
+
+nav.light .links:hover,
+nav.dark .links:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Update hover effect for both themes */
+nav.light ul li::after,
+nav.dark ul li::after {
+    background-color: var(--primary-color);
+}

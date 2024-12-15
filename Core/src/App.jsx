@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Discover from "./Frontend/Components/Discover/Discover";
 import Features from "./Frontend/Components/Features/Features";
 import Footer from "./Frontend/Components/Footer/Footer";
@@ -19,12 +19,11 @@ import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
 import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
 import EmailLinkPage from './Frontend/Pages/Admin/EmailLinkPage';
 import WaitingPage from './Frontend/Pages/Admin/WaitingPage';
-import Preference from './Frontend/Components/About/Preference';
+import Preference from './Frontend/Components/Preference/Preference';
 
 const App = () => {
   return (
      <AuthProvider>
-      <Router>
         <Navbar />
         <Routes>
           <Route
@@ -58,7 +57,6 @@ const App = () => {
           <Route path="/live-event" element={<LiveEvent />} />
           <Route path="/online-event" element={<OnlineEvent />} />
         </Routes>
-      </Router>
     </AuthProvider> 
   );
 };

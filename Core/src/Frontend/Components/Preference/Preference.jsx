@@ -9,11 +9,12 @@ export default function Preference() {
         offset: ["start center", "end center"]
     });
 
-    // Create progress values for each line outside the map function
+    // Create progress values for each line with different delays
     const lineProgresses = Array.from({ length: 4 }, (_, i) => 
         useTransform(
             scrollYProgress,
-            [i * 0.2, i * 0.2 + 0.3],
+            // Add delay by adjusting these values
+            [(i * 0.2), (i * 0.2 + 0.3)], // Increase first number for more delay
             ["101%", "-101%"]
         )
     );
@@ -30,7 +31,12 @@ export default function Preference() {
                         style={{
                             backgroundPosition: lineProgresses[index]
                         }}
-                        transition={{delay: 0.5}}
+                        // Add transition delay here
+                        transition={{
+                            delay: index * 0.3, 
+                            duration: 0.5, 
+                            ease: "easeInOut" 
+                        }}
                         className="gradient-text"
                     >
                         {line}{index !== lines.length - 1 ? '.' : ''}

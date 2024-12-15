@@ -2,42 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-:root{
-    --primary-color: #b30d0d;
-    --secondary-color: #000;
-    --font-family: 'Space Grotesk';
-    --text-color: #fff;
-    --transition: all 0.5s ease-in-out;
-}
-
-body{
-/* color: var(--text-color); */
-font-family: var(--font-family);
-
-/* background: #000; */
-
-
-
-}
-
-html
-{
-    scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar
-{
-    width: 0.05rem;
-}
-
-::-webkit-scrollbar-thumb
-{
-    background-color: transparent;
-}
-
+/* Your other custom CSS below */

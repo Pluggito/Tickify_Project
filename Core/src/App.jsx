@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import Discover from "./Frontend/Components/Discover/Discover";
-import Features from "./Frontend/Components/Features/Features";
-import Footer from "./Frontend/Components/Footer/Footer";
-import Hero from "./Frontend/Components/Hero/Hero";
-import Navbar from "./Frontend/Components/Navbar/Navbar";
+import Discover from "./Frontend/Components/Discover";
+import Features from "./Frontend/Components/Features";
+import Footer from "./Frontend/Components/Footer";
+import Hero from "./Frontend/Components/Hero";
+import Navbar from "./Frontend/Components/Navbar";
 import EventsCategory from './Frontend/Pages/EventsCategory';
 import About from './Frontend/Pages/About';
 import Advert from './Frontend/Pages/Advert';
@@ -19,7 +19,7 @@ import LiveEvent from './Frontend/Pages/CreateEvent/LiveEvent';
 import OnlineEvent from './Frontend/Pages/CreateEvent/OnlineEvent';
 import EmailLinkPage from './Frontend/Pages/Admin/EmailLinkPage';
 import WaitingPage from './Frontend/Pages/Admin/WaitingPage';
-import Preference from './Frontend/Components/Preference/Preference';
+import Preference from './Frontend/Components/Preference';
 
 const App = () => {
   return (
